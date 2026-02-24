@@ -650,6 +650,27 @@ const Footer = () => {
 };
 
 export default function App() {
+  React.useEffect(() => {
+    const handleContextMenu = (e) => e.preventDefault();
+    const handleKeyDown = (e) => {
+      // Disable Ctrl+C, Ctrl+U, Ctrl+S, F12
+      if (
+        (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) ||
+        e.key === 'F12'
+      ) {
+        e.preventDefault();
+      }
+    };
+
+    document.addEventListener('contextmenu', handleContextMenu);
+    document.addEventListener('keydown', handleKeyDown);
+
+    return () => {
+      document.removeEventListener('contextmenu', handleContextMenu);
+      document.removeEventListener('keydown', handleKeyDown);
+    };
+  }, []);
+
   return (
     <div className="bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
       <Navbar />

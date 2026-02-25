@@ -1,0 +1,11 @@
+About Us: 
+SkillDisha TechLab is a professional IT training institute dedicated to delivering industry-oriented and job-focused courses in Cyber Security, Cloud Computing, Virtualization, Data Center, Networking, Windows Server, Linux Administration, Firewall Management, Storage Management and other IT Infrastructure. We specialize in practical, hands-on training that aligns with real-world job requirements and current IT industry demand.
+Our training programs are designed for students, graduates, and working professionals who want to build strong technical foundations and advance their careers in the IT domain. At SkillDisha TechLab, learning goes beyond theory — we emphasize real-time labs, practical scenarios, and skill-based learning to ensure job readiness.
+Training is delivered by experienced industry experts with real corporate exposure, enabling learners to gain both technical expertise and practical confidence. We focus on career guidance, certification preparation, live projects, internships, and job-ready skills, helping learners prepare for employment opportunities in today’s competitive IT market.
+SkillDisha TechLab is committed to empowering learners with in-demand IT skills, career support, and industry-relevant knowledge to build successful and sustainable careers in technology.
+
+🎯 Mission
+To bridge the gap between academics and industry by delivering practical, job-oriented IT training in Cyber Security, Cloud, and IT Infrastructure, enabling learners to build real-world skills and sustainable IT careers.
+
+🌟 Vision
+To be a trusted and industry-aligned IT training institute that creates skilled, confident, and job-ready professionals capable of meeting the evolving demands of the global IT industry.

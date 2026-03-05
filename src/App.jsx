@@ -1,7 +1,11 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import logo1 from './assets/Logo.jpg-removebg-preview.png'
 import logo from './assets/Logo.png';
 import logoTechLab from './assets/SkillDisha_TechLab_JPG.jpg.jpeg';
+import homePic1 from './assets/Home_Page_Pic_1.jpeg';
+import homePic2 from './assets/Home_Page_Pic_2.jpeg';
+import profilePic from './assets/Profile_Pic.jpeg';
 import {
   Shield, Code, Terminal, Database, Trophy, Users,
   ChevronRight, CheckCircle, Mail, Phone, MapPin,
@@ -11,7 +15,7 @@ import {
 
 // --- Constants & Helpers ---
 
-const WHATSAPP_NUMBER = "919773162289";
+const WHATSAPP_NUMBER = "916356375745";
 
 const handleWhatsApp = (message = "Hello SkillDisha! I'm interested in learning more about your programs.") => {
   const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
@@ -34,16 +38,16 @@ const Navbar = ({ setActiveTab }) => {
 
   const navLinks = [
     { name: 'About Us', href: '#about' },
-    { name: 'Trainer', href: '#trainer' },
-    { name: 'Features', href: '#features' },
+    { name: 'Know Your Trainer', href: '#trainer' },
+    { name: 'Why Us', href: '#features' },
     { name: 'Contact', href: '#contact' },
   ];
 
   const categories = [
-    { name: 'IT Infrastructure', href: '#programs', index: 0 },
-    { name: 'Cyber Security', href: '#programs', index: 1 },
-    { name: 'Cloud & Tech', href: '#programs', index: 2 },
-    { name: 'Software Dev', href: '#programs', index: 3 },
+    { name: 'Cyber Security', href: '#courses', index: 1 },
+    { name: 'Cloud Computing & Virtualization', href: '#courses', index: 2 },
+    { name: 'IT Infrastructure, Network & System Administration', href: '#courses', index: 0 },
+    { name: 'Software Development & Programming', href: '#courses', index: 3 },
   ];
 
   const handleProgramClick = (index) => {
@@ -52,10 +56,10 @@ const Navbar = ({ setActiveTab }) => {
   };
 
   return (
-    <nav className={`fixed w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-xl py-3' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white shadow-xl py-3' : 'bg-transparent py-5'}`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center gap-2">
-          <img src={logoTechLab} alt="SkillDisha TechLab" className="h-12 w-auto object-contain rounded-lg" />
+          <img src={logo1} alt="SkillDisha TechLab" className="h-24 w-auto object-contain rounded-lg" />
         </a>
 
         {/* Desktop Links */}
@@ -65,8 +69,9 @@ const Navbar = ({ setActiveTab }) => {
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <button className="flex items-center gap-1 text-slate-600 hover:text-blue-600 transition-colors font-semibold py-2">
-              Programs <ChevronDown size={14} className={`transition-transform duration-200 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+            <button className="flex items-center gap-1 text-slate-600 hover:text-blue-600 transition-all duration-300 font-semibold py-2 relative group-hover:scale-105">
+              Courses <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+              <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </button>
             <AnimatePresence>
               {isDropdownOpen && (
@@ -81,9 +86,10 @@ const Navbar = ({ setActiveTab }) => {
                       key={cat.name}
                       href={cat.href}
                       onClick={() => handleProgramClick(cat.index)}
-                      className="block px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-600 hover:text-blue-600 transition-all text-sm font-bold"
+                      className="group/item block px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-600 hover:text-blue-600 transition-all text-sm font-bold flex items-center justify-between"
                     >
-                      {cat.name}
+                      <span>{cat.name}</span>
+                      <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300" />
                     </a>
                   ))}
                 </motion.div>
@@ -96,6 +102,13 @@ const Navbar = ({ setActiveTab }) => {
               {link.name}
             </a>
           ))}
+          <a
+            href="tel:+916356375745"
+            className="flex items-center gap-2 text-slate-600 hover:text-blue-600 transition-colors font-bold"
+          >
+            <Phone size={18} className="text-blue-600" />
+            <span>63563 75745</span>
+          </a>
           <button
             onClick={() => handleWhatsApp()}
             className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-200"
@@ -125,7 +138,7 @@ const Navbar = ({ setActiveTab }) => {
                   onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
                   className="w-full flex items-center justify-between text-slate-700 py-3 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
                 >
-                  Programs <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
+                  Courses <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
                 </button>
                 <AnimatePresence>
                   {isMobileProgramsOpen && (
@@ -155,6 +168,14 @@ const Navbar = ({ setActiveTab }) => {
                   {link.name}
                 </a>
               ))}
+              <a
+                href="tel:+916356375745"
+                className="flex items-center gap-3 text-slate-700 py-3 px-4 font-bold rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                <Phone size={18} className="text-blue-600" />
+                <span>63563 75745</span>
+              </a>
               <button
                 onClick={() => handleWhatsApp()}
                 className="bg-blue-600 text-white py-4 rounded-xl font-black mt-2 shadow-lg shadow-blue-200"
@@ -166,6 +187,50 @@ const Navbar = ({ setActiveTab }) => {
         )}
       </AnimatePresence>
     </nav>
+  );
+};
+
+const ImageSlider = () => {
+  const images = [
+    homePic1,
+    homePic2,
+  ];
+
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [images.length]);
+
+  return (
+    <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden mt-[136px]">
+      <AnimatePresence mode="wait">
+        <motion.img
+          key={currentIndex}
+          src={images[currentIndex]}
+          initial={{ opacity: 0, scale: 1.05 }}
+          animate={{ opacity: 1, scale: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: 1.5, ease: "easeInOut" }}
+          className="absolute inset-0 w-full h-full object-cover object-top"
+          alt={`Slide ${currentIndex + 1}`}
+        />
+      </AnimatePresence>
+      <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-transparent to-black/40 pointer-events-none" />
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 flex gap-3 z-10">
+        {images.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => setCurrentIndex(index)}
+            className={`w-3 h-3 rounded-full transition-all duration-300 ${currentIndex === index ? "bg-white w-8" : "bg-white/50"
+              }`}
+          />
+        ))}
+      </div>
+    </div>
   );
 };
 
@@ -182,10 +247,6 @@ const Hero = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-semibold mb-6">
-            <div className="w-2 h-2 rounded-full bg-blue-600 animate-pulse"></div>
-            Next Batch Starting: March 15th
-          </div>
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-slate-900">
             Unlocking Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600">SkillDisha.</span>
           </h1>
@@ -199,12 +260,13 @@ const Hero = () => {
             >
               Enroll Now <ArrowRight className="group-hover:translate-x-1 transition-transform" />
             </button>
-            <button
-              onClick={() => handleWhatsApp("Hello! Can you please share the course brochure?")}
-              className="px-8 py-4 rounded-xl font-bold text-slate-700 border border-slate-200 hover:bg-white transition-all shadow-sm"
+            <a
+              href="/brochure.pdf"
+              download="SkillDisha_Brochure.pdf"
+              className="px-8 py-4 rounded-xl font-bold text-slate-700 border-2 border-slate-200 hover:border-blue-600 hover:text-blue-600 transition-all shadow-sm inline-block text-center"
             >
               Download Brochure
-            </button>
+            </a>
           </div>
         </motion.div>
 
@@ -312,11 +374,11 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
   ];
 
   return (
-    <section id="programs" className="py-24 bg-white overflow-hidden">
+    <section id="courses" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-slate-900">
-            Professional <span className="text-blue-600">Job Oriented</span> Programs
+            Professional <span className="text-blue-600">Job Oriented</span> Courses
           </h2>
           <p className="text-slate-600 max-w-2xl mx-auto text-lg">
             Elite training programs designed to bridge the gap between education and industry.
@@ -608,7 +670,7 @@ const TrainerSection = () => {
           >
             <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group">
               <img
-                src="https://images.unsplash.com/photo-1560250097-0b93528c311a?auto=format&fit=crop&q=80&w=800"
+                src={profilePic}
                 alt="Shailesh Patel"
                 className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
               />
@@ -737,7 +799,7 @@ ${formData.message}`;
                 <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100"><Phone className="text-emerald-600" /></div>
                 <div>
                   <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Call Us</p>
-                  <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-bold text-slate-700 text-lg hover:text-emerald-600 transition-colors">+91 97731 62289</a>
+                  <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-bold text-slate-700 text-lg hover:text-emerald-600 transition-colors">+91 63563 75745</a>
                 </div>
               </div>
               <div className="flex items-center gap-4">
@@ -867,7 +929,7 @@ const Footer = ({ setActiveTab }) => {
               </li>
               <li className="flex items-center gap-3">
                 <Phone size={16} className="text-emerald-500 flex-shrink-0" />
-                <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-blue-400 transition-colors">+91 97731 62289</a>
+                <a href={`tel:+${WHATSAPP_NUMBER}`} className="hover:text-blue-400 transition-colors">+91 63563 75745</a>
               </li>
               <li className="flex items-center gap-3">
                 <Mail size={16} className="text-blue-500 flex-shrink-0" />
@@ -916,6 +978,7 @@ export default function App() {
   return (
     <div className="bg-slate-50 text-slate-900 font-sans selection:bg-blue-600 selection:text-white">
       <Navbar setActiveTab={setActiveTab} />
+      <ImageSlider />
       <main>
         <Hero />
         <FeaturesSection />

@@ -501,13 +501,16 @@ const AboutSection = () => {
             </h2>
             <div className="space-y-6 text-slate-600 text-lg font-medium leading-relaxed">
               <p>
-                SkillDisha TechLab is a professional IT training institute dedicated to delivering industry-oriented and job-focused courses in Cyber Security, Cloud Computing, Virtualization, and more.
+                SkillDisha TechLab is a professional IT training institute dedicated to delivering industry-oriented and job-focused courses in Cyber Security, Cloud Computing, Virtualization, Data Center, Networking, Windows Server, Linux Administration, Firewall Management, Storage Management and other IT Infrastructure.
               </p>
               <p>
-                We specialize in practical, hands-on training that aligns with real-world job requirements and current IT industry demand. Our training goes beyond theory — we emphasize real-time labs and skill-based learning to ensure job readiness.
+                We specialize in practical, hands-on training that aligns with real-world job requirements and current IT industry demand. Our training programs are designed for students, graduates, and working professionals who want to build strong technical foundations and advance their careers in the IT domain.
               </p>
               <p>
-                Whether you're a student, graduate, or professional, our mission is to empower you with in-demand IT skills and industry-relevant knowledge to build a successful career.
+                At SkillDisha TechLab, learning goes beyond theory — we emphasize real-time labs, practical scenarios, and skill-based learning to ensure job readiness. Training is delivered by experienced industry experts with real corporate exposure, enabling learners to gain both technical expertise and practical confidence.
+              </p>
+              <p>
+                We focus on career guidance, certification preparation, live projects, internships, and job-ready skills, helping learners prepare for employment opportunities in today’s competitive IT market. SkillDisha TechLab is committed to empowering learners with in-demand IT skills, career support, and industry-relevant knowledge to build successful and sustainable careers in technology.
               </p>
             </div>
           </motion.div>
@@ -525,7 +528,7 @@ const AboutSection = () => {
               <div className="w-12 h-12 bg-blue-600 rounded-2xl flex items-center justify-center text-white mb-6 shadow-lg shadow-blue-200">
                 <Shield size={24} />
               </div>
-              <h3 className="text-2xl font-bold text-slate-900 mb-4">🎯 Our Mission</h3>
+              <h3 className="text-2xl font-bold text-slate-900 mb-4">🎯 Mission</h3>
               <p className="text-slate-600 leading-relaxed font-medium">
                 To bridge the gap between academics and industry by delivering practical, job-oriented IT training in Cyber Security, Cloud, and IT Infrastructure, enabling learners to build real-world skills and sustainable IT careers.
               </p>
@@ -543,7 +546,7 @@ const AboutSection = () => {
               <div className="w-12 h-12 bg-white/10 backdrop-blur-md rounded-2xl flex items-center justify-center text-white mb-6 border border-white/20">
                 <Users size={24} />
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4">🌟 Our Vision</h3>
+              <h3 className="text-2xl font-bold text-white mb-4">🌟 Vision</h3>
               <p className="text-blue-50 leading-relaxed font-medium">
                 To be a trusted and industry-aligned IT training institute that creates skilled, confident, and job-ready professionals capable of meeting the evolving demands of the global IT industry.
               </p>
@@ -557,12 +560,15 @@ const AboutSection = () => {
 
 const FeaturesSection = () => {
   const features = [
-    { name: "Live Projects", icon: <Terminal />, color: "bg-blue-100 text-blue-600" },
-    { name: "Real-World Training", icon: <CheckCircle />, color: "bg-emerald-100 text-emerald-600" },
-    { name: "Certification", icon: <Trophy />, color: "bg-orange-100 text-orange-600" },
-    { name: "Placement Assistance", icon: <Briefcase />, color: "bg-rose-100 text-rose-600" },
-    { name: "Hackathon Mentorship", icon: <Users />, color: "bg-purple-100 text-purple-600" },
-    { name: "24/7 Lab Access", icon: <Database />, color: "bg-cyan-100 text-cyan-600" }
+    { name: "Practical Training", icon: <Terminal />, color: "bg-blue-100 text-blue-600" },
+    { name: "Industry Trainers", icon: <Users />, color: "bg-emerald-100 text-emerald-600" },
+    { name: "Live Projects", icon: <Code />, color: "bg-orange-100 text-orange-600" },
+    { name: "Small Batches", icon: <Users />, color: "bg-purple-100 text-purple-600" },
+    { name: "Personal Attention", icon: <MessageSquare />, color: "bg-cyan-100 text-cyan-600" },
+    { name: "Updated Curriculum", icon: <GraduationCap />, color: "bg-rose-100 text-rose-600" },
+    { name: "Certification", icon: <Trophy />, color: "bg-amber-100 text-yellow-600" },
+    { name: "Career Guidance", icon: <Briefcase />, color: "bg-indigo-100 text-indigo-600" },
+    { name: "Job Support", icon: <Shield />, color: "bg-slate-100 text-slate-600" }
   ];
 
   return (
@@ -571,17 +577,17 @@ const FeaturesSection = () => {
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-slate-900">Why <span className="text-blue-600">SkillDisha?</span></h2>
         </div>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-6">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-8">
           {features.map((f, i) => (
             <motion.div
               key={i}
               whileHover={{ scale: 1.05 }}
-              className="flex flex-col items-center text-center p-6 bg-white border border-slate-100 rounded-3xl group hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/50 transition-all"
+              className="flex flex-col items-center text-center p-8 bg-white border border-slate-100 rounded-3xl group hover:border-blue-200 hover:shadow-xl hover:shadow-blue-50/50 transition-all"
             >
-              <div className={`p-4 rounded-2xl mb-4 ${f.color} group-hover:scale-110 transition-transform shadow-sm`}>
-                {f.icon}
+              <div className={`p-5 rounded-2xl mb-6 ${f.color} group-hover:scale-110 transition-transform shadow-sm`}>
+                {React.cloneElement(f.icon, { size: 32 })}
               </div>
-              <p className="font-bold text-sm text-slate-700 uppercase tracking-tight">{f.name}</p>
+              <p className="font-bold text-lg text-slate-700 uppercase tracking-tight">{f.name}</p>
             </motion.div>
           ))}
         </div>
@@ -662,31 +668,31 @@ const TrainerSection = () => {
   return (
     <section id="trainer" className="py-24 bg-white overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid lg:grid-cols-2 gap-16 items-center">
+        <div className="grid lg:grid-cols-5 gap-16 items-center">
           <motion.div
             initial={{ opacity: 0, x: -50 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="relative"
+            className="lg:col-span-2 relative flex justify-center"
           >
-            <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group">
+            <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group max-w-sm">
               <img
                 src={profilePic}
                 alt="Shailesh Patel"
                 className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-10 pt-20">
-                <h3 className="text-3xl font-bold text-white mb-1">Shailesh Patel</h3>
-                <p className="text-blue-400 font-bold uppercase tracking-widest text-sm">Chief IT Trainer & Security Expert</p>
+                <h3 className="text-2xl font-bold text-white mb-1">Shailesh Patel</h3>
+                <p className="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Chief IT Trainer & Security Expert</p>
               </div>
             </div>
             {/* Decorative background elements */}
-            <div className="absolute -top-10 -left-10 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10 opacity-60"></div>
-            <div className="absolute -bottom-10 -right-10 w-60 h-60 bg-emerald-100 rounded-full blur-3xl -z-10 opacity-60"></div>
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10 opacity-60"></div>
           </motion.div>
 
           <motion.div
             initial={{ opacity: 0, x: 50 }}
             whileInView={{ opacity: 1, x: 0 }}
+            className="lg:col-span-3"
           >
             <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-bold mb-6">
               <Trophy size={14} /> Certified, Experienced, Recognized

@@ -281,7 +281,7 @@ const Hero = () => {
             Unlocking Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">SkillDisha.</span>
           </h1>
           <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 max-w-xl font-medium">
-            Elite training in Cyber Security, Full-Stack Development, and AI. Get industry-ready with hands-on projects and placement support from SkillDisha – India's premier tech institute.
+            SkillDisha empowers students and professionals with practical, industry-focused skills that turn potential into performance. We help learners build confidence, knowledge, and career-ready expertise for real-world success.
           </p>
           <div className="flex flex-wrap gap-4">
             <button
@@ -344,7 +344,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
       id: "it-infra",
       title: "IT Infrastructure & System Administration",
       duration: "6-8 Months",
-      description: "Comprehensive training in IT foundations, network connectivity, and enterprise server management.",
+      description: "Learn IT Infrastructure, Computer Networking, Windows Server, and Linux System Administration with hands-on training. This program prepares students for careers in IT support, network administration, and system administration used in modern enterprise environments. ",
       modules: [
         { title: "Digital Office Productivity & Collaboration Tools", desc: "Word, Excel, PowerPoint, Email, Cloud & Team Collaboration" },
         { title: "PC Hardware, Diagnostics & System Maintenance", desc: "Computer Components, Assembly, Troubleshooting, Preventive Maintenance & System Health" },
@@ -358,7 +358,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
       id: "cyber-sec",
       title: "Professional Cyber Security Programs",
       duration: "3-4 Months",
-      description: "Advanced security training covering threat intelligence, ethical hacking, and incident response.",
+      description: "Master Cyber Security, Ethical Hacking, VAPT, Web Security, SOC Operations, and Bug Bounty Hunting with practical labs. This course helps students build skills to detect, prevent, and respond to cyber-attacks using industry-standard security tools. ",
       modules: [
         { title: "Cyber Security Foundations & Threat Intelligence", duration: "15 Days", desc: "Understand cyber threats, attack vectors, and security fundamentals" },
         { title: "Network Security, Firewalls & Perimeter Défense", duration: "1 Month", desc: "Secure enterprise networks against internal and external attacks" },
@@ -378,7 +378,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
       id: "cloud-v",
       title: "Professional Cloud & Virtualization Programs",
       duration: "3-4 Months",
-      description: "Expertise in data center architecture, virtualization, and multi-cloud infrastructure.",
+      description: "Build expertise in Cloud Computing, Data Center Technologies, Server Virtualization, AWS, and Microsoft Azure. Learn to deploy, manage, and secure modern cloud infrastructure and enterprise virtual environments. ",
       modules: [
         { title: "Data Center Architecture & Design", duration: "15 Days", desc: "Understand modern data centre architecture, components, power, cooling, and high-availability design concepts." },
         { title: "Enterprise Storage Fundamentals", duration: "15 Days", desc: "Learn core storage technologies including SAN, NAS, DAS, redundancy, backup, and data protection basics." },
@@ -394,7 +394,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
       id: "soft-dev",
       title: "Software Development & Programming",
       duration: "Custom",
-      description: "Comprehensive coding programs from school syllabus to elite internship projects.",
+      description: "Learn Programming and Website Development (Front-End, Back-End, and Full Stack) using languages like C, C++, Java, and Python. Gain practical experience through live projects, internships, and real-world application development. ",
       modules: [
         { title: "Website Development (Front End / Back End / Full Stack)", desc: "Learn to design and develop complete websites—from user interface to database and deployment—using industry-relevant tools and live projects." },
         { title: "Programming (C, C++, Java, Python)", desc: "Build strong programming fundamentals, logic and problem-solving skills using the most in-demand languages for academics and IT careers." },
@@ -411,8 +411,8 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             Professional Job Oriented Courses
           </h2>
-          <p className="text-slate-600 dark:text-slate-400 max-w-2xl mx-auto text-lg font-medium">
-            Elite training programs designed to bridge the gap between education and industry.
+          <p className="text-slate-600 dark:text-slate-400 max-w-5xl mx-auto text-lg font-medium leading-relaxed">
+            Our Professional Job Oriented Courses are designed to equip students with industry-ready skills in Cyber Security, Cloud Computing, IT Infrastructure, Networking, and Software Development. With practical training, real-world labs, and expert guidance, students gain the technical knowledge required to succeed in modern IT careers. These programs help learners build strong foundations and improve employability in the rapidly growing technology industry.
           </p>
         </div>
 

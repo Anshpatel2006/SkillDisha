@@ -84,7 +84,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
   };
 
   return (
-    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 dark:bg-slate-950/90 backdrop-blur-md shadow-xl py-3 border-b border-white/10 dark:border-slate-800/50' : 'bg-transparent py-5'}`}>
+    <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/90 dark:bg-slate-950/95 backdrop-blur-md shadow-xl py-4 border-b border-white/10 dark:border-slate-800/50`}>
       <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
         <a href="#" className="flex items-center gap-2">
           <img src={logo1} alt="SkillDisha TechLab" className="h-20 w-auto object-contain rounded-lg shadow-sm" />
@@ -97,7 +97,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
             onMouseEnter={() => setIsDropdownOpen(true)}
             onMouseLeave={() => setIsDropdownOpen(false)}
           >
-            <button className={`flex items-center gap-1 transition-all duration-300 font-semibold py-2 relative group-hover:scale-105 ${isScrolled ? 'text-slate-600 dark:text-slate-300' : 'text-white'}`}>
+            <button className={`flex items-center gap-1 transition-all duration-300 font-semibold py-2 relative group-hover:scale-105 text-slate-600 dark:text-slate-300`}>
               Courses <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
               <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
             </button>
@@ -126,12 +126,12 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
           </div>
 
           {navLinks.map((link) => (
-            <a key={link.name} href={link.href} className={`transition-colors font-semibold ${isScrolled ? 'text-slate-600 dark:text-slate-300' : 'text-white'}`}>
+            <a key={link.name} href={link.href} className={`transition-colors font-semibold text-slate-600 dark:text-slate-300`}>
               {link.name}
             </a>
           ))}
-          <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-bold transition-all ${isScrolled ? 'text-slate-700 dark:text-slate-300' : 'text-white'}`}>
-            <Phone size={18} className={isScrolled ? "text-blue-600" : "text-white"} />
+          <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-bold transition-all text-slate-700 dark:text-slate-300`}>
+            <Phone size={18} className="text-blue-600" />
             <span>63563 75745</span>
           </a>
           <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
@@ -144,7 +144,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
         </div>
 
         {/* Mobile Toggle */}
-        <button className={`md:hidden p-2 transition-colors ${isScrolled ? 'text-slate-900 dark:text-white' : 'text-white'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+        <button className={`md:hidden p-2 transition-colors text-slate-900 dark:text-white`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
           {isMobileMenuOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -236,7 +236,7 @@ const ImageSlider = () => {
   }, [images.length]);
 
   return (
-    <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden">
+    <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden mt-[112px]">
       <AnimatePresence mode="wait">
         <motion.img
           key={currentIndex}
@@ -277,6 +277,13 @@ const Hero = () => {
           whileInView={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8 }}
         >
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-black uppercase tracking-widest mb-8">
+            <span className="relative flex h-2 w-2">
+              <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-blue-400 opacity-75"></span>
+              <span className="relative inline-flex rounded-full h-2 w-2 bg-blue-600"></span>
+            </span>
+            Batch Starting Soon
+          </div>
           <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-slate-900 dark:text-slate-50">
             Unlocking Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">SkillDisha.</span>
           </h1>
@@ -408,6 +415,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
     <section id="courses" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
+          <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
           <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             Professional Job Oriented Courses
           </h2>
@@ -717,82 +725,62 @@ const TrainerSection = () => {
     "Comprehensive career guidance, mentorship & placement support"
   ];
 
-  const leftAchievements = achievements.slice(0, 3);
-  const rightAchievements = achievements.slice(3);
-
   return (
     <section id="trainer" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-          {/* Left Column: Image (Top) + first 3 points */}
-          <div className="flex flex-col gap-10">
+        <div className="flex flex-col gap-16">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+            {/* Profile Picture Column */}
             <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              className="relative flex justify-center"
+              initial={{ opacity: 0, scale: 0.9 }}
+              whileInView={{ opacity: 1, scale: 1 }}
+              className="lg:col-span-4 relative flex justify-center lg:justify-start"
             >
-              <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white dark:border-slate-800 group w-full max-w-sm transition-colors duration-500">
+              <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white dark:border-slate-800 group w-full max-w-[280px] transition-colors duration-500">
                 <img
                   src={profilePic}
                   alt="Shailesh Patel"
                   className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-10 pt-20">
-                  <h3 className="text-2xl font-bold text-white mb-1 font-inter uppercase">Shailesh Patel</h3>
-                  <p className="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Chief IT Trainer & Security Expert</p>
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-12">
+                  <h3 className="text-xl font-bold text-white mb-0.5 font-inter uppercase tracking-tight">Shailesh Patel</h3>
+                  <p className="text-blue-400 font-bold uppercase tracking-widest text-[8px]">Chief IT Trainer & Security Expert</p>
                 </div>
               </div>
-              <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100 dark:bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-60"></div>
+              <div className="absolute top-0 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 w-40 h-40 bg-blue-100 dark:bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-60"></div>
             </motion.div>
 
-            {/* Achievements Left (Desktop Only here) */}
-            <div className="hidden lg:grid grid-cols-1 gap-4">
-              {leftAchievements.map((item, idx) => (
-                <AchievementCard key={idx} item={item} idx={idx} />
-              ))}
+            {/* Bio Description Column */}
+            <div className="lg:col-span-8 flex flex-col gap-6">
+              <motion.div
+                initial={{ opacity: 0, x: 20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+              >
+                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-bold mb-4 transition-colors duration-500">
+                  <Trophy size={14} /> Certified, Experienced, Recognized
+                </div>
+                <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 text-slate-900 dark:text-slate-50 leading-tight">
+                  Know Your Trainer
+                </h2>
+                <p className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed font-inter italic">
+                  With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
+                </p>
+              </motion.div>
+
+              <button
+                onClick={() => handleWhatsApp("Hello Shailesh! I'd like to book a career strategy call with you.")}
+                className="group bg-slate-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-black transition-all shadow-xl flex items-center justify-center lg:justify-start gap-3 dark:shadow-blue-900/40 w-full lg:w-fit"
+              >
+                Book a Strategy Call <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+              </button>
             </div>
           </div>
 
-          {/* Right Column: Heading (Top) + remaining points */}
-          <div className="flex flex-col gap-10">
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-            >
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-sm font-bold mb-6 transition-colors duration-500">
-                <Trophy size={14} /> Certified, Experienced, Recognized
-              </div>
-              <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 dark:from-blue-400 dark:via-indigo-400 dark:to-blue-500 leading-tight">
-                Know Your Trainer
-              </h2>
-              <p className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed font-inter">
-                With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
-              </p>
-            </motion.div>
-
-            <div className="grid grid-cols-1 gap-4">
-              {/* Desktop: Right Achievements */}
-              <div className="hidden lg:block space-y-4">
-                {rightAchievements.map((item, idx) => (
-                  <AchievementCard key={idx} item={item} idx={idx + 3} />
-                ))}
-              </div>
-
-              {/* Mobile View: Stacking ALL achievements here to follow heading */}
-              <div className="lg:hidden grid grid-cols-1 gap-4">
-                {achievements.map((item, idx) => (
-                  <AchievementCard key={idx} item={item} idx={idx} />
-                ))}
-              </div>
-            </div>
-
-            <button
-              onClick={() => handleWhatsApp("Hello Shailesh! I'd like to book a career strategy call with you.")}
-              className="mt-4 group bg-slate-900 dark:bg-blue-600 hover:bg-black dark:hover:bg-blue-700 text-white px-10 py-5 rounded-2xl font-black transition-all shadow-xl flex items-center justify-center lg:justify-start gap-3 dark:shadow-blue-900/40 w-full lg:w-fit"
-            >
-              Book a Strategy Call <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-            </button>
+          {/* Key Achievements Multi-column Grid */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+            {achievements.map((item, idx) => (
+              <AchievementCard key={idx} item={item} idx={idx} />
+            ))}
           </div>
         </div>
       </div>
@@ -827,16 +815,16 @@ const Contact = () => {
 
     // Construct WhatsApp message
     const message = `Hello SkillDisha Team!
-    
-I'm interested in the *${formData.course}* course.
 
-*Details:*
-- Name: ${formData.name}
-- Email: ${formData.email}
-- Course: ${formData.course}
+      I'm interested in the *${formData.course}* course.
 
-*Message:*
-${formData.message}`;
+      *Details:*
+      - Name: ${formData.name}
+      - Email: ${formData.email}
+      - Course: ${formData.course}
+
+      *Message:*
+      ${formData.message}`;
 
     const whatsappUrl = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
 
@@ -898,7 +886,7 @@ ${formData.message}`;
                     value={formData.name}
                     onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                     className={`w-full bg-slate-50 dark:bg-slate-800 border ${errors.name ? 'border-red-500' : 'border-slate-200 dark:border-slate-700'} text-slate-900 dark:text-white rounded-xl p-4 focus:border-blue-600 focus:bg-white dark:focus:bg-slate-950 transition-all outline-none font-medium`}
-                    placeholder="John Doe"
+                    placeholder="Your Name"
                   />
                   {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.name}</p>}
                 </div>
@@ -909,7 +897,7 @@ ${formData.message}`;
                     value={formData.email}
                     onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                     className={`w-full bg-slate-50 dark:bg-slate-800 border ${errors.email ? 'border-red-500' : 'border-slate-200 dark:border-slate-700'} text-slate-900 dark:text-white rounded-xl p-4 focus:border-blue-600 focus:bg-white dark:focus:bg-slate-950 transition-all outline-none font-medium`}
-                    placeholder="john@example.com"
+                    placeholder="Email Address"
                   />
                   {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.email}</p>}
                 </div>

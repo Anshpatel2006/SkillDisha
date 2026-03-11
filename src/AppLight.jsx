@@ -83,7 +83,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] py-3 border-b border-slate-100' : 'bg-transparent py-5'}`}>
+        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] py-4 border-b border-slate-100`}>
             <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                 <a href="#" className="flex items-center gap-2 group">
                     <img src={logo1} alt="SkillDisha TechLab" className="h-16 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
@@ -96,7 +96,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                         onMouseEnter={() => setIsDropdownOpen(true)}
                         onMouseLeave={() => setIsDropdownOpen(false)}
                     >
-                        <button className={`flex items-center gap-1 transition-all duration-300 font-bold py-2 relative ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
+                        <button className={`flex items-center gap-1 transition-all duration-300 font-bold py-2 relative text-slate-800`}>
                             Courses <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
                             <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                         </button>
@@ -125,18 +125,18 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                     </div>
 
                     {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className={`transition-colors font-bold relative group ${isScrolled ? 'text-slate-800' : 'text-white'}`}>
+                        <a key={link.name} href={link.href} className={`transition-colors font-bold relative group text-slate-800`}>
                             {link.name}
                             <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
                         </a>
                     ))}
-                    <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-black transition-all ${isScrolled ? 'text-slate-900' : 'text-white'}`}>
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm ${isScrolled ? 'bg-blue-50 text-blue-600' : 'bg-white/20 text-white backdrop-blur-md'}`}>
+                    <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-black transition-all text-slate-900`}>
+                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-blue-50 text-blue-600`}>
                             <Phone size={18} />
                         </div>
                         <span className="text-sm">63563 75745</span>
                     </a>
-                    <div className={`h-6 w-px mx-1 ${isScrolled ? 'bg-slate-200' : 'bg-white/30'}`}></div>
+                    <div className={`h-6 w-px mx-1 bg-slate-200`}></div>
                     <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
                     <button
                         onClick={() => handleWhatsApp()}
@@ -147,7 +147,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                 </div>
 
                 {/* Mobile Toggle */}
-                <button className={`md:hidden p-2 rounded-xl transition-colors ${isScrolled ? 'text-slate-900 bg-slate-50' : 'text-white bg-white/20 backdrop-blur-md'}`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                <button className={`md:hidden p-2 rounded-xl transition-colors text-slate-900 bg-slate-50`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
                     {isMobileMenuOpen ? <X /> : <Menu />}
                 </button>
             </div>
@@ -171,7 +171,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                                     onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
                                     className="w-full flex items-center justify-between text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
                                 >
-                                    Our Courses <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
+                                    Courses <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
                                 </button>
                                 <AnimatePresence>
                                     {isMobileProgramsOpen && (
@@ -239,7 +239,7 @@ const ImageSlider = () => {
     }, [images.length]);
 
     return (
-        <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden">
+        <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden mt-[96px]">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={currentIndex}
@@ -305,7 +305,7 @@ const Hero = () => {
                             download="SkillDisha_Brochure.pdf"
                             className="px-10 py-5 rounded-2xl font-black text-slate-800 border-2 border-slate-100 hover:border-blue-200 hover:bg-slate-50 transition-all inline-block text-center bg-white shadow-sm"
                         >
-                            Brochure PDF
+                            Download Brochure
                         </a>
                     </div>
                 </motion.div>
@@ -327,8 +327,8 @@ const Hero = () => {
                                     ))}
                                 </div>
                                 <div>
-                                    <p className="text-sm font-black text-slate-900">1,000+ Alumni</p>
-                                    <p className="text-xs text-slate-500 font-bold">Industry Placed</p>
+                                    <p className="text-sm font-black text-slate-900">1,000+ Students</p>
+                                    <p className="text-xs text-slate-500 font-bold">Successfully Placed</p>
                                 </div>
                             </div>
                             <div className="bg-slate-900 rounded-2xl p-8 font-mono text-sm leading-relaxed overflow-hidden border border-slate-800 shadow-2xl">
@@ -421,10 +421,10 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
             <div className="max-w-7xl mx-auto px-6">
                 <div className="text-center mb-20">
                     <span className="text-blue-600 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
-                    <h2 className="text-4xl lg:text-6xl font-black mb-6 text-slate-900 tracking-tight">
-                        Job-Oriented Career Programs
+                    <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600">
+                        Professional Job Oriented Courses
                     </h2>
-                    <p className="text-slate-500 max-w-5xl mx-auto text-lg md:text-xl font-medium leading-relaxed">
+                    <p className="text-slate-600 max-w-5xl mx-auto text-lg font-medium leading-relaxed">
                         Our Professional Job Oriented Courses are designed to equip students with industry-ready skills in Cyber Security, Cloud Computing, IT Infrastructure, Networking, and Software Development. With practical training, real-world labs, and expert guidance, students gain the technical knowledge required to succeed in modern IT careers. These programs help learners build strong foundations and improve employability in the rapidly growing technology industry.
                     </p>
                 </div>
@@ -462,7 +462,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
                                 </h3>
                                 <div className="flex items-center gap-3 bg-blue-50 px-6 py-2 rounded-full text-blue-700 font-black text-sm mb-8">
                                     <Terminal size={18} />
-                                    <span>Program Duration: {programs[activeTab].duration}</span>
+                                    <span>Duration: {programs[activeTab].duration}</span>
                                 </div>
                                 <p className="text-slate-500 mb-10 leading-relaxed text-xl max-w-4xl font-medium">
                                     {programs[activeTab].description}
@@ -471,7 +471,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
                                     onClick={() => handleWhatsApp(`Hello! I would like to request more information about the *${programs[activeTab].title}* program.`)}
                                     className="px-10 py-5 bg-slate-900 rounded-2xl font-black text-white hover:bg-black transition-all flex items-center gap-3 shadow-xl shadow-slate-200"
                                 >
-                                    Get Course Details <ArrowRight size={20} />
+                                    Request Info <ArrowRight size={20} />
                                 </button>
                             </div>
                         </div>
@@ -721,79 +721,62 @@ const TrainerSection = () => {
         "Comprehensive career guidance, mentorship & placement support"
     ];
 
-    const leftAchievements = achievements.slice(0, 3);
-    const rightAchievements = achievements.slice(3);
-
     return (
         <section id="trainer" className="py-24 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-20 items-center">
-
-                    {/* Left Column: Image (Top) + first 3 points */}
-                    <div className="flex flex-col gap-10">
+                <div className="flex flex-col gap-16">
+                    <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
+                        {/* Profile Picture Column */}
                         <motion.div
-                            initial={{ opacity: 0, x: -30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                            className="relative flex justify-center"
+                            initial={{ opacity: 0, scale: 0.9 }}
+                            whileInView={{ opacity: 1, scale: 1 }}
+                            className="lg:col-span-4 relative flex justify-center lg:justify-start"
                         >
-                            <div className="relative z-10 rounded-[40px] overflow-hidden shadow-2xl border-8 border-white group w-full max-w-sm transition-colors duration-500">
+                            <div className="relative z-10 rounded-3xl overflow-hidden shadow-2xl border-4 border-white group w-full max-w-[280px] transition-colors duration-500">
                                 <img
                                     src={profilePic}
                                     alt="Shailesh Patel"
                                     className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
                                 />
-                                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-10 pt-20">
-                                    <h3 className="text-2xl font-bold text-white mb-1 font-inter uppercase">Shailesh Patel</h3>
-                                    <p className="text-blue-400 font-bold uppercase tracking-widest text-[10px]">Chief IT Trainer & Security Expert</p>
+                                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-12">
+                                    <h3 className="text-xl font-bold text-white mb-0.5 font-inter uppercase tracking-tight">Shailesh Patel</h3>
+                                    <p className="text-blue-400 font-bold uppercase tracking-widest text-[8px]">Chief IT Trainer & Security Expert</p>
                                 </div>
                             </div>
-                            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10 opacity-60"></div>
+                            <div className="absolute top-0 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10 opacity-60"></div>
                         </motion.div>
 
-                        <div className="hidden lg:grid grid-cols-1 gap-4">
-                            {leftAchievements.map((item, idx) => (
-                                <AchievementCard key={idx} item={item} idx={idx} />
-                            ))}
+                        {/* Bio Description Column */}
+                        <div className="lg:col-span-8 flex flex-col gap-6">
+                            <motion.div
+                                initial={{ opacity: 0, x: 20 }}
+                                whileInView={{ opacity: 1, x: 0 }}
+                            >
+                                <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-4 transition-colors duration-500">
+                                    <Trophy size={14} /> Certified, Experienced, Recognized
+                                </div>
+                                <h2 className="text-3xl lg:text-5xl font-black mb-6 text-slate-900 leading-tight">
+                                    Know Your Trainer
+                                </h2>
+                                <p className="text-slate-600 text-lg font-medium leading-relaxed font-inter italic">
+                                    With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
+                                </p>
+                            </motion.div>
+
+                            <button
+                                onClick={() => handleWhatsApp("Hello Shailesh! I'd like to book a career strategy call with you.")}
+                                className="group bg-slate-900 hover:bg-black text-white px-8 py-4 rounded-xl font-black transition-all shadow-xl flex items-center justify-center lg:justify-start gap-3 w-full lg:w-fit"
+                            >
+                                Book a Strategy Call <ArrowRight className="group-hover:translate-x-1 transition-transform" />
+                            </button>
                         </div>
                     </div>
 
-                    {/* Right Column: Heading (Top) + remaining points */}
-                    <div className="flex flex-col gap-10">
-                        <motion.div
-                            initial={{ opacity: 0, x: 30 }}
-                            whileInView={{ opacity: 1, x: 0 }}
-                        >
-                            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-sm font-bold mb-6 transition-colors duration-500">
-                                <Trophy size={14} /> Certified, Experienced, Recognized
-                            </div>
-                            <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-indigo-600 to-blue-700 leading-tight">
-                                Know Your Trainer
-                            </h2>
-                            <p className="text-slate-600 text-lg font-medium leading-relaxed font-inter">
-                                With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
-                            </p>
-                        </motion.div>
-
-                        <div className="grid grid-cols-1 gap-4">
-                            <div className="hidden lg:block space-y-4">
-                                {rightAchievements.map((item, idx) => (
-                                    <AchievementCard key={idx} item={item} idx={idx + 3} />
-                                ))}
-                            </div>
-
-                            <div className="lg:hidden grid grid-cols-1 gap-4">
-                                {achievements.map((item, idx) => (
-                                    <AchievementCard key={idx} item={item} idx={idx} />
-                                ))}
-                            </div>
-                        </div>
-
-                        <button
-                            onClick={() => handleWhatsApp("Hello Shailesh! I'd like to book a career strategy call with you.")}
-                            className="mt-4 group bg-slate-900 hover:bg-black text-white px-10 py-5 rounded-2xl font-black transition-all shadow-xl flex items-center justify-center lg:justify-start gap-3 w-full lg:w-fit"
-                        >
-                            Book a Strategy Call <ArrowRight className="group-hover:translate-x-1 transition-transform" />
-                        </button>
+                    {/* Key Achievements Multi-column Grid */}
+                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {achievements.map((item, idx) => (
+                            <AchievementCard key={idx} item={item} idx={idx} />
+                        ))}
                     </div>
                 </div>
             </div>
@@ -805,6 +788,10 @@ const Contact = () => {
     const [formData, setFormData] = React.useState({ name: '', email: '', course: 'Cyber Security', message: '' });
     const [errors, setErrors] = React.useState({});
     const [status, setStatus] = React.useState('');
+
+    const sanitizeInput = (str) => {
+        return str.replace(/[^\w. ]/gi, (c) => `&#${c.charCodeAt(0)};`);
+    };
 
     const validate = () => {
         const newErrors = {};
@@ -879,7 +866,7 @@ const Contact = () => {
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
                                         className={`w-full bg-slate-50 border ${errors.name ? 'border-red-500' : 'border-slate-200'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium`}
-                                        placeholder="John Doe"
+                                        placeholder="Your Name"
                                     />
                                     {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.name}</p>}
                                 </div>
@@ -890,7 +877,7 @@ const Contact = () => {
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
                                         className={`w-full bg-slate-50 border ${errors.email ? 'border-red-500' : 'border-slate-200'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium`}
-                                        placeholder="john@example.com"
+                                        placeholder="Email Address"
                                     />
                                     {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.email}</p>}
                                 </div>

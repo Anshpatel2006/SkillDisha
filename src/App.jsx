@@ -1,27 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import logo1 from './assets/Logo.jpg-removebg-preview.png'
-import logo from './assets/Logo.png';
 import logoTechLab from './assets/SkillDisha_TechLab_JPG.jpg.jpeg';
 import homePic1 from './assets/Home_Page_Pic_1.jpeg';
 import homePic2 from './assets/Home_Page_Pic_2.jpeg';
 import profilePic from './assets/Profile_Pic.jpeg';
+import aboutPic from './assets/About_us.jpeg';
 import {
-  Shield, Code, Terminal, Database, Trophy, Users,
+  Shield, Terminal, Trophy, Users,
   ChevronRight, CheckCircle, Mail, Phone, MapPin,
-  Github, Twitter, Linkedin, Briefcase, GraduationCap,
-  MessageSquare, Menu, X, ArrowRight, ChevronDown,
-  Sun, Moon
+  Github, Twitter, Linkedin,
+  Menu, X, ArrowRight, ChevronDown,
+  Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
 } from 'lucide-react';
+import { WHATSAPP_NUMBER, handleWhatsApp, navLinks, categories, achievements, programs } from './constants';
 
-// --- Constants & Helpers ---
 
-const WHATSAPP_NUMBER = "916356375745";
-
-const handleWhatsApp = (message = "Hello SkillDisha! I'm interested in learning more about your programs.") => {
-  const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-  window.open(url, '_blank');
-};
 
 // --- Components ---
 
@@ -64,19 +58,16 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
 
-  const navLinks = [
-    { name: 'About Us', href: '#about' },
-    { name: 'Know Your Trainer', href: '#trainer' },
-    { name: 'Why Us', href: '#features' },
-    { name: 'Contact', href: '#contact' },
-  ];
-
-  const categories = [
-    { name: 'Cyber Security', href: '#courses', index: 1 },
-    { name: 'Cloud Computing & Virtualization', href: '#courses', index: 2 },
-    { name: 'IT Infrastructure, Network & System Administration', href: '#courses', index: 0 },
-    { name: 'Software Development & Programming', href: '#courses', index: 3 },
-  ];
+  useEffect(() => {
+    if (isMobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isMobileMenuOpen]);
 
   const handleProgramClick = (index) => {
     setActiveTab(index);
@@ -117,7 +108,6 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                       className="group/item block px-4 py-3 rounded-xl hover:bg-blue-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-400 hover:text-blue-600 dark:hover:text-blue-400 transition-all text-sm font-bold flex items-center justify-between"
                     >
                       <span>{cat.name}</span>
-                      <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300" />
                     </a>
                   ))}
                 </motion.div>
@@ -134,6 +124,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
             <Phone size={18} className="text-blue-600" />
             <span>63563 75745</span>
           </a>
+          <div className="hidden md:block h-6 w-px mx-1 bg-slate-200 dark:bg-slate-800"></div>
           <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
           <button
             onClick={() => handleWhatsApp()}
@@ -156,7 +147,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
             initial={{ opacity: 0, height: 0 }}
             animate={{ opacity: 1, height: 'auto' }}
             exit={{ opacity: 0, height: 0 }}
-            className="absolute top-full left-0 w-full bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 md:hidden overflow-hidden shadow-2xl"
+            className="absolute top-full left-0 w-full bg-white dark:bg-slate-950 border-b border-slate-200 dark:border-slate-800 md:hidden overflow-y-auto max-h-[calc(100vh-80px)] shadow-2xl"
           >
             <div className="p-6 flex flex-col gap-4">
               <div className="space-y-1">
@@ -346,77 +337,14 @@ const Hero = () => {
 
 const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
-  const programs = [
-    {
-      id: "it-infra",
-      title: "IT Infrastructure & System Administration",
-      duration: "6-8 Months",
-      description: "Learn IT Infrastructure, Computer Networking, Windows Server, and Linux System Administration with hands-on training. This program prepares students for careers in IT support, network administration, and system administration used in modern enterprise environments. ",
-      modules: [
-        { title: "Digital Office Productivity & Collaboration Tools", desc: "Word, Excel, PowerPoint, Email, Cloud & Team Collaboration" },
-        { title: "PC Hardware, Diagnostics & System Maintenance", desc: "Computer Components, Assembly, Troubleshooting, Preventive Maintenance & System Health" },
-        { title: "Computer Networking Foundations & Connectivity Essentials", desc: "Networking Basics, LAN/WAN Concepts, Devices, IP Addressing & Connectivity" },
-        { title: "Client Operating Systems: Windows 10 /11 Administration", desc: "Installation, Configuration, User Management, Security & Troubleshooting" },
-        { title: "Enterprise Windows Server Administration (Server 2019 / 2022)", desc: "Active Directory, Users/Group, Domains, DNS, DHCP, Group Policy, File Services & Security" },
-        { title: "Enterprise Linux System Administration (Redhat 8/9)", desc: "System Installation, Users & Permissions, Services, Networking & Security" }
-      ]
-    },
-    {
-      id: "cyber-sec",
-      title: "Professional Cyber Security Programs",
-      duration: "3-4 Months",
-      description: "Master Cyber Security, Ethical Hacking, VAPT, Web Security, SOC Operations, and Bug Bounty Hunting with practical labs. This course helps students build skills to detect, prevent, and respond to cyber-attacks using industry-standard security tools. ",
-      modules: [
-        { title: "Cyber Security Foundations & Threat Intelligence", duration: "15 Days", desc: "Understand cyber threats, attack vectors, and security fundamentals" },
-        { title: "Network Security, Firewalls & Perimeter Défense", duration: "1 Month", desc: "Secure enterprise networks against internal and external attacks" },
-        { title: "Linux Security & Open-Source Security Operations", duration: "1 Month", desc: "Master Linux administration from a cyber security perspective" },
-        { title: "Windows & Active Directory Security Engineering", duration: "1 Month", desc: "Secure enterprise Windows domains and enterprise environments" },
-        { title: "Ethical Hacking & Penetration Testing Essentials", duration: "2-3 Month", desc: "Learn legal ethical hacking techniques using structured methodologies" },
-        { title: "Web Application Security & OWASP Top 10", duration: "1-2 Month", desc: "Identify, exploit, and remediate real-world web vulnerabilities" },
-        { title: "Vulnerability Assessment & Penetration Testing (VAPT)", duration: "1-2 Month", desc: "Assess risk, perform audits, and deliver professional security reports" },
-        { title: "Bug Bounty Hunting & Responsible Disclosure Practices", duration: "1-2 Month", desc: "Find real-world vulnerabilities and report them ethically to organizations" },
-        { title: "Security Operations Center (SOC) & SIEM Monitoring", duration: "1-2 Month", desc: "Detect, analyse, and respond to live security incidents" },
-        { title: "Digital Forensics & Incident Response (DFIR)", duration: "1-2 Month", desc: "Investigate cyber-attacks and handle security breaches professionally" },
-        { title: "Cloud Security Fundamentals & Zero-Trust Architecture", duration: "1-Month", desc: "Secure cloud, hybrid, and modern enterprise environments" },
-        { title: "Linux Shell Scripting for Cyber Security & Automation", duration: "1-Month", desc: "Learn Linux shell scripting fundamentals to automate basic cyber security and system administration tasks." }
-      ]
-    },
-    {
-      id: "cloud-v",
-      title: "Professional Cloud & Virtualization Programs",
-      duration: "3-4 Months",
-      description: "Build expertise in Cloud Computing, Data Center Technologies, Server Virtualization, AWS, and Microsoft Azure. Learn to deploy, manage, and secure modern cloud infrastructure and enterprise virtual environments. ",
-      modules: [
-        { title: "Data Center Architecture & Design", duration: "15 Days", desc: "Understand modern data centre architecture, components, power, cooling, and high-availability design concepts." },
-        { title: "Enterprise Storage Fundamentals", duration: "15 Days", desc: "Learn core storage technologies including SAN, NAS, DAS, redundancy, backup, and data protection basics." },
-        { title: "Server Virtualization with Microsoft Hyper-V", duration: "1 Month", desc: "Deploy and manage virtual machines using Microsoft Hyper-V in enterprise server environments." },
-        { title: "Enterprise Virtualization with VMware ESXi & vSphere", duration: "1 Month", desc: "Configure, manage, and optimize virtual infrastructure using VMware ESXi and vSphere technologies." },
-        { title: "Amazon Web Services (AWS) Cloud Infrastructure Fundamentals", duration: "1 Month", desc: "Build and manage core AWS cloud services including compute, storage, networking, and security basics." },
-        { title: "Microsoft Azure Cloud Infrastructure Fundamentals", duration: "1 Month", desc: "Design and operate cloud infrastructure using Microsoft Azure services and management tools." },
-        { title: "Microsoft 365 Fundamentals: Identity, Email & Collaboration", duration: "10 Days", desc: "Administer cloud-based identity, email, and collaboration services using Microsoft 365." },
-        { title: "Basic Cloud Automation & Operations", duration: "10 Days", desc: "Automate routine cloud operations, monitoring, backups, and cost optimization using basic scripting and tools." }
-      ]
-    },
-    {
-      id: "soft-dev",
-      title: "Software Development & Programming",
-      duration: "Custom",
-      description: "Learn Programming and Website Development (Front-End, Back-End, and Full Stack) using languages like C, C++, Java, and Python. Gain practical experience through live projects, internships, and real-world application development. ",
-      modules: [
-        { title: "Website Development (Front End / Back End / Full Stack)", desc: "Learn to design and develop complete websites—from user interface to database and deployment—using industry-relevant tools and live projects." },
-        { title: "Programming (C, C++, Java, Python)", desc: "Build strong programming fundamentals, logic and problem-solving skills using the most in-demand languages for academics and IT careers." },
-        { title: "College Projects & Internship", desc: "Industry-guided mini and final year projects with practical implementation, documentation, internship certification and viva support." },
-        { title: "School Syllabus", desc: "Complete support for school computer syllabus, practical and basic coding to build strong technical foundations from an early stage." }
-      ]
-    }
-  ];
+
 
   return (
-    <section id="courses" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section id="courses" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
-          <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+          <h2 className="scroll-mt-30 text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
             Professional Job Oriented Courses
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-5xl mx-auto text-lg font-medium leading-relaxed">
@@ -516,9 +444,9 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section id="about" className="py-24 scroll-mt-[20px] relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500 leading-tight">
+        <h2 className=" text-4xl lg:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500 leading-tight " >
           About SkillDisha TechLab
         </h2>
 
@@ -531,16 +459,13 @@ const AboutSection = () => {
           >
             <div className="aspect-video md:aspect-[4/3] glass rounded-[40px] overflow-hidden shadow-2xl border-white/50 dark:border-slate-800/50">
               <img
-                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000"
-                alt="IT Training Environment"
+                src={aboutPic}
+                alt="About SkillDisha TechLab"
                 className="w-full h-full object-cover"
               />
               <div className="absolute inset-0 bg-blue-600/10 dark:bg-blue-900/20 mix-blend-multiply"></div>
             </div>
-            <div className="absolute -bottom-6 -left-6 glass p-6 rounded-2xl border-blue-50 dark:border-slate-800 shadow-xl hidden lg:block">
-              <p className="text-4xl font-black text-blue-600 dark:text-blue-400">20+</p>
-              <p className="text-[10px] font-black text-slate-400 dark:text-slate-500 uppercase tracking-widest mt-1">Years of Excellence</p>
-            </div>
+
           </motion.div>
 
           {/* Text Content */}
@@ -612,7 +537,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section id="features" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">
@@ -640,7 +565,7 @@ const FeaturesSection = () => {
 
 const CareerSection = () => {
   return (
-    <section className="py-24 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="py-24 scroll-mt-[20px] relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-blue-900/10 dark:to-emerald-900/10 rounded-[40px] p-8 md:p-16 border border-blue-100 dark:border-blue-800 transition-colors duration-500 relative shadow-sm overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 text-blue-200/50 dark:text-blue-800/10 opacity-100 group-hover:scale-110 transition-transform"><Briefcase size={120} /></div>
@@ -664,7 +589,7 @@ const CareerSection = () => {
 
 const Testimonials = () => {
   return (
-    <section className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
           Success Stories
@@ -698,35 +623,43 @@ const Testimonials = () => {
   );
 };
 
-const AchievementCard = ({ item, idx }) => (
-  <motion.div
-    initial={{ opacity: 0, y: 10 }}
-    whileInView={{ opacity: 1, y: 0 }}
-    transition={{ delay: idx * 0.05 }}
-    className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-100 dark:border-slate-800 hover:border-blue-200 dark:hover:border-blue-500 transition-all hover:bg-white dark:hover:bg-slate-800 hover:shadow-lg hover:shadow-blue-50 dark:hover:shadow-blue-950/40 group font-inter"
-  >
-    <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center text-blue-600 dark:text-blue-400 flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-      <CheckCircle size={14} />
-    </div>
-    <span className="text-slate-700 dark:text-slate-300 font-bold text-sm leading-relaxed">{item}</span>
-  </motion.div>
-);
+const AchievementCard = ({ item, idx }) => {
+  const firstCommaIndex = item.indexOf(',');
+  const firstPeriodIndex = item.indexOf('.');
+  let splitIndex = -1;
 
-const TrainerSection = () => {
-  const achievements = [
-    "Microsoft-certified (MCP, MCSA, MCSE, Hyper-V, MCTS, MCT)",
-    "20+ years of proven IT industry experience",
-    "2500+ students successfully trained",
-    "Delivered 200+ seminars, webinars, and awareness sessions",
-    "Extensive corporate, government & Indian Army training experience",
-    "Featured speaker at THM Surat and OPAL India (Security Week)",
-    "Media presence: 'Cyber Talk with Shailesh' by Exotic Web Media",
-    "Specialized experience in government workforce training",
-    "Comprehensive career guidance, mentorship & placement support"
-  ];
+  if (firstCommaIndex !== -1 && firstPeriodIndex !== -1) {
+    splitIndex = Math.min(firstCommaIndex, firstPeriodIndex);
+  } else {
+    splitIndex = firstCommaIndex !== -1 ? firstCommaIndex : firstPeriodIndex;
+  }
+
+  const title = splitIndex !== -1 ? item.substring(0, splitIndex + 1) : item;
+  const rest = splitIndex !== -1 ? item.substring(splitIndex + 1) : "";
 
   return (
-    <section id="trainer" className="py-24 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <motion.div
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: idx * 0.05 }}
+      className="flex items-start gap-4 p-5 rounded-[24px] bg-slate-50/50 dark:bg-slate-900/50 border border-slate-100 dark:border-slate-800 hover:border-blue-400 dark:hover:border-blue-500 transition-all hover:bg-white dark:hover:bg-slate-900 hover:shadow-2xl hover:shadow-blue-500/10 dark:hover:shadow-blue-500/5 group font-inter"
+    >
+      <div className="mt-1 w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-200 dark:shadow-blue-900/40 group-hover:scale-110 transition-transform">
+        <CheckCircle size={18} strokeWidth={3} />
+      </div>
+      <p className="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
+        <span className="font-extrabold text-slate-950 dark:text-white mr-1">{title}</span>
+        {rest}
+      </p>
+    </motion.div>
+  );
+};
+
+const TrainerSection = () => {
+
+
+  return (
+    <section id="trainer" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col gap-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -744,7 +677,6 @@ const TrainerSection = () => {
                 />
                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-12">
                   <h3 className="text-xl font-bold text-white mb-0.5 font-inter uppercase tracking-tight">Shailesh Patel</h3>
-                  <p className="text-blue-400 font-bold uppercase tracking-widest text-[8px]">Chief IT Trainer & Security Expert</p>
                 </div>
               </div>
               <div className="absolute top-0 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 w-40 h-40 bg-blue-100 dark:bg-blue-900/10 rounded-full blur-3xl -z-10 opacity-60"></div>
@@ -777,7 +709,7 @@ const TrainerSection = () => {
           </div>
 
           {/* Key Achievements Multi-column Grid */}
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             {achievements.map((item, idx) => (
               <AchievementCard key={idx} item={item} idx={idx} />
             ))}
@@ -832,9 +764,8 @@ const Contact = () => {
     window.open(whatsappUrl, '_blank');
 
     // Reset form
-    setFormData({ name: '', email: '', course: 'Cyber Security', message: '' });
+    setFormData({ name: '', email: '', course: 'IT Infrastructure & System Administration', message: '' });
     setStatus("Thank you! Your inquiry has been sent successfully.");
-    setFormData({ name: "", email: "", course: "IT Infrastructure & System Administration", message: "" });
     setErrors({});
     setTimeout(() => setStatus(""), 5000);
   };
@@ -1028,24 +959,7 @@ export default function App({ isDarkMode, toggleTheme }) {
   const [activeTab, setActiveTab] = useState(0);
 
   useEffect(() => {
-    const handleContextMenu = (e) => e.preventDefault();
-    const handleKeyDown = (e) => {
-      // Disable Ctrl+C, Ctrl+U, Ctrl+S, F12
-      if (
-        (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) ||
-        e.key === 'F12'
-      ) {
-        e.preventDefault();
-      }
-    };
-
-    document.addEventListener('contextmenu', handleContextMenu);
-    document.addEventListener('keydown', handleKeyDown);
-
-    return () => {
-      document.removeEventListener('contextmenu', handleContextMenu);
-      document.removeEventListener('keydown', handleKeyDown);
-    };
+    window.scrollTo(0, 0);
   }, []);
 
   return (

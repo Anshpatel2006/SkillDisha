@@ -5,22 +5,17 @@ import logoTechLab from './assets/SkillDisha_TechLab_JPG.jpg.jpeg';
 import homePic1 from './assets/Home_Page_Pic_1.jpeg';
 import homePic2 from './assets/Home_Page_Pic_2.jpeg';
 import profilePic from './assets/Profile_Pic.jpeg';
+import aboutPic from './assets/About_us.jpeg';
 import {
-    Shield, Code, Terminal, Database, Trophy, Users,
+    Shield, Terminal, Trophy, Users,
     ChevronRight, CheckCircle, Mail, Phone, MapPin,
-    Github, Twitter, Linkedin, Briefcase, GraduationCap,
-    MessageSquare, Menu, X, ArrowRight, ChevronDown,
-    Sun, Moon
+    Github, Twitter, Linkedin,
+    Menu, X, ArrowRight, ChevronDown,
+    Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
 } from 'lucide-react';
+import { WHATSAPP_NUMBER, handleWhatsApp, navLinks, categories, achievements, programs } from './constants';
 
-// --- Constants & Helpers ---
 
-const WHATSAPP_NUMBER = "916356375745";
-
-const handleWhatsApp = (message = "Hello SkillDisha! I'm interested in learning more about your programs.") => {
-    const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
-    window.open(url, '_blank');
-};
 
 // --- Components ---
 
@@ -63,19 +58,16 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
-    const navLinks = [
-        { name: 'About Us', href: '#about' },
-        { name: 'Know Your Trainer', href: '#trainer' },
-        { name: 'Why Us', href: '#features' },
-        { name: 'Contact', href: '#contact' },
-    ];
-
-    const categories = [
-        { name: 'Cyber Security', href: '#courses', index: 1 },
-        { name: 'Cloud Computing & Virtualization', href: '#courses', index: 2 },
-        { name: 'IT Infrastructure, Network & System Administration', href: '#courses', index: 0 },
-        { name: 'Software Development & Programming', href: '#courses', index: 3 },
-    ];
+    useEffect(() => {
+        if (isMobileMenuOpen) {
+            document.body.style.overflow = 'hidden';
+        } else {
+            document.body.style.overflow = 'unset';
+        }
+        return () => {
+            document.body.style.overflow = 'unset';
+        };
+    }, [isMobileMenuOpen]);
 
     const handleProgramClick = (index) => {
         setActiveTab(index);
@@ -116,7 +108,6 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                                             className="group/item block px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-all text-sm font-bold flex items-center justify-between"
                                         >
                                             <span>{cat.name}</span>
-                                            <ChevronRight size={14} className="opacity-0 -translate-x-2 group-hover/item:opacity-100 group-hover/item:translate-x-0 transition-all duration-300" />
                                         </a>
                                     ))}
                                 </motion.div>
@@ -159,13 +150,9 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                         initial={{ opacity: 0, height: 0 }}
                         animate={{ opacity: 1, height: 'auto' }}
                         exit={{ opacity: 0, height: 0 }}
-                        className="absolute top-full left-0 w-full bg-white border-b border-slate-100 md:hidden overflow-hidden shadow-2xl"
+                        className="absolute top-full left-0 w-full bg-white border-b border-slate-100 md:hidden overflow-y-auto max-h-[calc(100vh-80px)] shadow-2xl"
                     >
                         <div className="p-6 flex flex-col gap-4">
-                            <div className="flex justify-between items-center p-4 bg-slate-50 rounded-2xl mb-2">
-                                <span className="text-sm font-black text-slate-800 uppercase tracking-widest">Toggle Theme</span>
-                                <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-                            </div>
                             <div className="space-y-1">
                                 <button
                                     onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
@@ -195,20 +182,24 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                                     )}
                                 </AnimatePresence>
                             </div>
+                            <div className="h-px bg-slate-100 my-1"></div>
                             {navLinks.map((link) => (
-                                <a key={link.name} href={link.href} className="text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all border-b border-slate-50 last:border-0" onClick={() => setIsMobileMenuOpen(false)}>
+                                <a key={link.name} href={link.href} className="text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all" onClick={() => setIsMobileMenuOpen(false)}>
                                     {link.name}
                                 </a>
                             ))}
-                            <div className="h-px bg-slate-100 my-2"></div>
                             <a
                                 href="tel:+916356375745"
-                                className="flex items-center gap-3 text-slate-900 py-4 px-4 font-black rounded-xl bg-blue-50/50 hover:text-blue-600 transition-all"
+                                className="flex items-center gap-3 text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
                                 onClick={() => setIsMobileMenuOpen(false)}
                             >
                                 <Phone size={18} className="text-blue-600" />
                                 <span>63563 75745</span>
                             </a>
+                            <div className="flex justify-between items-center py-3 px-4">
+                                <span className="text-slate-700 font-bold">Theme</span>
+                                <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                            </div>
                             <button
                                 onClick={() => handleWhatsApp()}
                                 className="bg-blue-600 text-white py-5 rounded-2xl font-black mt-2 shadow-xl shadow-blue-200"
@@ -351,70 +342,7 @@ const Hero = () => {
 
 const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
-    const programs = [
-        {
-            id: "it-infra",
-            title: "IT Infrastructure & System Administration",
-            duration: "6-8 Months",
-            description: "Learn IT Infrastructure, Computer Networking, Windows Server, and Linux System Administration with hands-on training. This program prepares students for careers in IT support, network administration, and system administration used in modern enterprise environments. ",
-            modules: [
-                { title: "Digital Office Productivity & Collaboration Tools", desc: "Word, Excel, PowerPoint, Email, Cloud & Team Collaboration" },
-                { title: "PC Hardware, Diagnostics & System Maintenance", desc: "Computer Components, Assembly, Troubleshooting, Preventive Maintenance & System Health" },
-                { title: "Computer Networking Foundations & Connectivity Essentials", desc: "Networking Basics, LAN/WAN Concepts, Devices, IP Addressing & Connectivity" },
-                { title: "Client Operating Systems: Windows 10 /11 Administration", desc: "Installation, Configuration, User Management, Security & Troubleshooting" },
-                { title: "Enterprise Windows Server Administration (Server 2019 / 2022)", desc: "Active Directory, Users/Group, Domains, DNS, DHCP, Group Policy, File Services & Security" },
-                { title: "Enterprise Linux System Administration (Redhat 8/9)", desc: "System Installation, Users & Permissions, Services, Networking & Security" }
-            ]
-        },
-        {
-            id: "cyber-sec",
-            title: "Professional Cyber Security Programs",
-            duration: "3-4 Months",
-            description: "Master Cyber Security, Ethical Hacking, VAPT, Web Security, SOC Operations, and Bug Bounty Hunting with practical labs. This course helps students build skills to detect, prevent, and respond to cyber-attacks using industry-standard security tools. ",
-            modules: [
-                { title: "Cyber Security Foundations & Threat Intelligence", duration: "15 Days", desc: "Understand cyber threats, attack vectors, and security fundamentals" },
-                { title: "Network Security, Firewalls & Perimeter Défense", duration: "1 Month", desc: "Secure enterprise networks against internal and external attacks" },
-                { title: "Linux Security & Open-Source Security Operations", duration: "1 Month", desc: "Master Linux administration from a cyber security perspective" },
-                { title: "Windows & Active Directory Security Engineering", duration: "1 Month", desc: "Secure enterprise Windows domains and enterprise environments" },
-                { title: "Ethical Hacking & Penetration Testing Essentials", duration: "2-3 Month", desc: "Learn legal ethical hacking techniques using structured methodologies" },
-                { title: "Web Application Security & OWASP Top 10", duration: "1-2 Month", desc: "Identify, exploit, and remediate real-world web vulnerabilities" },
-                { title: "Vulnerability Assessment & Penetration Testing (VAPT)", duration: "1-2 Month", desc: "Assess risk, perform audits, and deliver professional security reports" },
-                { title: "Bug Bounty Hunting & Responsible Disclosure Practices", duration: "1-2 Month", desc: "Find real-world vulnerabilities and report them ethically to organizations" },
-                { title: "Security Operations Center (SOC) & SIEM Monitoring", duration: "1-2 Month", desc: "Detect, analyse, and respond to live security incidents" },
-                { title: "Digital Forensics & Incident Response (DFIR)", duration: "1-2 Month", desc: "Investigate cyber-attacks and handle security breaches professionally" },
-                { title: "Cloud Security Fundamentals & Zero-Trust Architecture", duration: "1-Month", desc: "Secure cloud, hybrid, and modern enterprise environments" },
-                { title: "Linux Shell Scripting for Cyber Security & Automation", duration: "1-Month", desc: "Learn Linux shell scripting fundamentals to automate basic cyber security and system administration tasks." }
-            ]
-        },
-        {
-            id: "cloud-v",
-            title: "Professional Cloud & Virtualization Programs",
-            duration: "3-4 Months",
-            description: "Build expertise in Cloud Computing, Data Center Technologies, Server Virtualization, AWS, and Microsoft Azure. Learn to deploy, manage, and secure modern cloud infrastructure and enterprise virtual environments. ",
-            modules: [
-                { title: "Data Center Architecture & Design", duration: "15 Days", desc: "Understand modern data centre architecture, components, power, cooling, and high-availability design concepts." },
-                { title: "Enterprise Storage Fundamentals", duration: "15 Days", desc: "Learn core storage technologies including SAN, NAS, DAS, redundancy, backup, and data protection basics." },
-                { title: "Server Virtualization with Microsoft Hyper-V", duration: "1 Month", desc: "Deploy and manage virtual machines using Microsoft Hyper-V in enterprise server environments." },
-                { title: "Enterprise Virtualization with VMware ESXi & vSphere", duration: "1 Month", desc: "Configure, manage, and optimize virtual infrastructure using VMware ESXi and vSphere technologies." },
-                { title: "Amazon Web Services (AWS) Cloud Infrastructure Fundamentals", duration: "1 Month", desc: "Build and manage core AWS cloud services including compute, storage, networking, and security basics." },
-                { title: "Microsoft Azure Cloud Infrastructure Fundamentals", duration: "1 Month", desc: "Design and operate cloud infrastructure using Microsoft Azure services and management tools." },
-                { title: "Microsoft 365 Fundamentals: Identity, Email & Collaboration", duration: "10 Days", desc: "Administer cloud-based identity, email, and collaboration services using Microsoft 365." },
-                { title: "Basic Cloud Automation & Operations", duration: "10 Days", desc: "Automate routine cloud operations, monitoring, backups, and cost optimization using basic scripting and tools." }
-            ]
-        },
-        {
-            id: "soft-dev",
-            title: "Software Development",
-            duration: "Custom",
-            description: "Learn Programming and Website Development (Front-End, Back-End, and Full Stack) using languages like C, C++, Java, and Python. Gain practical experience through live projects, internships, and real-world application development. ",
-            modules: [
-                { title: "Website Development (Front End / Back End / Full Stack)", desc: "Learn to design and develop complete websites—from user interface to database and deployment—using industry-relevant tools and live projects." },
-                { title: "Programming (C, C++, Java, Python)", desc: "Build strong programming fundamentals, logic and problem-solving skills using the most in-demand languages for academics and IT careers." },
-                { title: "College Projects & Internship", desc: "Industry-guided mini and final year projects with practical implementation, documentation, internship certification and viva support." },
-                { title: "School Syllabus", desc: "Complete support for school computer syllabus, practical and basic coding to build strong technical foundations from an early stage." }
-            ]
-        }
-    ];
+
 
     return (
         <section id="courses" className="py-24 bg-[#fafbfc] overflow-hidden">
@@ -528,16 +456,13 @@ const AboutSection = () => {
                     >
                         <div className="aspect-video md:aspect-[4/3] bg-white/50 backdrop-blur-md rounded-[40px] overflow-hidden shadow-2xl border-white/50">
                             <img
-                                src="https://images.unsplash.com/photo-1517245386807-bb43f82c33c4?auto=format&fit=crop&q=80&w=1000"
-                                alt="IT Training Environment"
+                                src={aboutPic}
+                                alt="About SkillDisha TechLab"
                                 className="w-full h-full object-cover"
                             />
                             <div className="absolute inset-0 bg-blue-600/10 mix-blend-multiply"></div>
                         </div>
-                        <div className="absolute -bottom-6 -left-6 bg-white/80 backdrop-blur-md p-6 rounded-2xl border-blue-50 shadow-xl hidden lg:block">
-                            <p className="text-4xl font-black text-blue-600">20+</p>
-                            <p className="text-[10px] font-black text-slate-400 uppercase tracking-widest mt-1">Years of Excellence</p>
-                        </div>
+
                     </motion.div>
 
                     <motion.div
@@ -694,32 +619,40 @@ const Testimonials = () => {
     );
 };
 
-const AchievementCard = ({ item, idx }) => (
+const AchievementCard = ({ item, idx }) => {
+  const firstCommaIndex = item.indexOf(',');
+  const firstPeriodIndex = item.indexOf('.');
+  let splitIndex = -1;
+
+  if (firstCommaIndex !== -1 && firstPeriodIndex !== -1) {
+    splitIndex = Math.min(firstCommaIndex, firstPeriodIndex);
+  } else {
+    splitIndex = firstCommaIndex !== -1 ? firstCommaIndex : firstPeriodIndex;
+  }
+
+  const title = splitIndex !== -1 ? item.substring(0, splitIndex + 1) : item;
+  const rest = splitIndex !== -1 ? item.substring(splitIndex + 1) : "";
+
+  return (
     <motion.div
-        initial={{ opacity: 0, y: 10 }}
-        whileInView={{ opacity: 1, y: 0 }}
-        transition={{ delay: idx * 0.05 }}
-        className="flex items-start gap-4 p-4 rounded-2xl bg-slate-50 border border-slate-100 hover:border-blue-200 transition-all hover:bg-white hover:shadow-lg hover:shadow-blue-50 group font-inter"
+      initial={{ opacity: 0, y: 10 }}
+      whileInView={{ opacity: 1, y: 0 }}
+      transition={{ delay: idx * 0.05 }}
+      className="flex items-start gap-4 p-5 rounded-[24px] bg-slate-50/50 border border-slate-100 hover:border-blue-400 transition-all hover:bg-white hover:shadow-2xl hover:shadow-blue-500/10 group font-inter"
     >
-        <div className="mt-1 w-6 h-6 rounded-full bg-blue-100 flex items-center justify-center text-blue-600 flex-shrink-0 group-hover:bg-blue-600 group-hover:text-white transition-colors">
-            <CheckCircle size={14} />
-        </div>
-        <span className="text-slate-700 font-bold text-sm leading-relaxed">{item}</span>
+      <div className="mt-1 w-8 h-8 rounded-xl bg-blue-600 text-white flex items-center justify-center flex-shrink-0 shadow-lg shadow-blue-200 group-hover:scale-110 transition-transform">
+        <CheckCircle size={18} strokeWidth={3} />
+      </div>
+      <p className="text-slate-700 text-sm leading-relaxed">
+        <span className="font-extrabold text-slate-950 mr-1">{title}</span>
+        {rest}
+      </p>
     </motion.div>
-);
+  );
+};
 
 const TrainerSection = () => {
-    const achievements = [
-        "Microsoft-certified (MCP, MCSA, MCSE, Hyper-V, MCTS, MCT)",
-        "20+ years of proven IT industry experience",
-        "2500+ students successfully trained",
-        "Delivered 200+ seminars, webinars, and awareness sessions",
-        "Extensive corporate, government & Indian Army training experience",
-        "Featured speaker at THM Surat and OPAL India (Security Week)",
-        "Media presence: 'Cyber Talk with Shailesh' by Exotic Web Media",
-        "Specialized experience in government workforce training",
-        "Comprehensive career guidance, mentorship & placement support"
-    ];
+
 
     return (
         <section id="trainer" className="py-24 bg-white overflow-hidden">
@@ -740,7 +673,6 @@ const TrainerSection = () => {
                                 />
                                 <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-12">
                                     <h3 className="text-xl font-bold text-white mb-0.5 font-inter uppercase tracking-tight">Shailesh Patel</h3>
-                                    <p className="text-blue-400 font-bold uppercase tracking-widest text-[8px]">Chief IT Trainer & Security Expert</p>
                                 </div>
                             </div>
                             <div className="absolute top-0 left-1/2 lg:left-0 -translate-x-1/2 lg:translate-x-0 w-40 h-40 bg-blue-100 rounded-full blur-3xl -z-10 opacity-60"></div>
@@ -758,14 +690,14 @@ const TrainerSection = () => {
                                 <h2 className="text-3xl lg:text-5xl font-black mb-6 text-slate-900 leading-tight">
                                     Know Your Trainer
                                 </h2>
-                                <p className="text-slate-600 text-lg font-medium leading-relaxed font-inter italic">
+                                <p className="text-slate-700 text-lg font-medium leading-relaxed font-inter italic">
                                     With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
                                 </p>
                             </motion.div>
 
                             <button
                                 onClick={() => handleWhatsApp("Hello Shailesh! I'd like to book a career strategy call with you.")}
-                                className="group bg-slate-900 hover:bg-black text-white px-8 py-4 rounded-xl font-black transition-all shadow-xl flex items-center justify-center lg:justify-start gap-3 w-full lg:w-fit"
+                                className="group bg-blue-600 hover:bg-blue-700 text-white px-8 py-4 rounded-xl font-black transition-all shadow-xl shadow-blue-200 flex items-center justify-center lg:justify-start gap-3 w-full lg:w-fit"
                             >
                                 Book a Strategy Call <ArrowRight className="group-hover:translate-x-1 transition-transform" />
                             </button>
@@ -773,7 +705,7 @@ const TrainerSection = () => {
                     </div>
 
                     {/* Key Achievements Multi-column Grid */}
-                    <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {achievements.map((item, idx) => (
                             <AchievementCard key={idx} item={item} idx={idx} />
                         ))}
@@ -820,7 +752,8 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 bg-white">
+        <section id="contact" className="py-24 bg-slate-50/50 transition-colors duration-500 relative overflow-hidden">
+            <div className="absolute inset-0 bg-gradient-to-b from-white to-blue-50/30 -z-10"></div>
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
@@ -832,18 +765,18 @@ const Contact = () => {
                         </p>
 
                         <div className="space-y-6">
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 transition-colors duration-500"><Phone className="text-emerald-600" /></div>
+                            <div className="flex items-center gap-4 group">
+                                <div className="p-4 bg-white/80 rounded-2xl shadow-sm border border-slate-200/50 transition-all duration-300 group-hover:shadow-md group-hover:border-emerald-200 backdrop-blur-sm"><Phone className="text-emerald-600" /></div>
                                 <div>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Call Us</p>
-                                    <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-bold text-slate-700 text-lg hover:text-emerald-600 transition-colors">+91 63563 75745</a>
+                                    <p className="text-xs text-slate-400 font-extrabold uppercase tracking-widest mb-1">Call Us</p>
+                                    <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-extrabold text-slate-900 text-xl hover:text-emerald-600 transition-colors">+91 63563 75745</a>
                                 </div>
                             </div>
-                            <div className="flex items-center gap-4">
-                                <div className="p-3 bg-white rounded-xl shadow-sm border border-slate-100 transition-colors duration-500"><MapPin className="text-rose-600" /></div>
+                            <div className="flex items-center gap-4 group">
+                                <div className="p-4 bg-white/80 rounded-2xl shadow-sm border border-slate-200/50 transition-all duration-300 group-hover:shadow-md group-hover:border-rose-200 backdrop-blur-sm"><MapPin className="text-rose-600" /></div>
                                 <div>
-                                    <p className="text-xs text-slate-400 font-bold uppercase tracking-wider">Location</p>
-                                    <p className="font-bold text-slate-900 text-lg font-inter">203 , Atmos , Beside Sindhu Seva Samiti School, Anand Mahal Road , Adajan , Surat - 395009.</p>
+                                    <p className="text-xs text-slate-400 font-extrabold uppercase tracking-widest mb-1">Location</p>
+                                    <p className="font-bold text-slate-800 text-lg font-inter max-w-sm leading-snug">203 , Atmos , Beside Sindhu Seva Samiti School, Anand Mahal Road , Adajan , Surat - 395009.</p>
                                 </div>
                             </div>
                         </div>
@@ -856,7 +789,7 @@ const Contact = () => {
                         </button>
                     </div>
 
-                    <div className="bg-white p-10 rounded-[40px] border border-slate-100 shadow-2xl transition-colors duration-500">
+                    <div className="bg-white/80 p-10 rounded-[40px] border border-slate-200/50 shadow-[0_20px_50px_-20px_rgba(0,0,0,0.1)] transition-all duration-500 backdrop-blur-md">
                         <form className="space-y-6" onSubmit={handleSubmit}>
                             <div className="grid md:grid-cols-2 gap-6">
                                 <div>
@@ -865,7 +798,7 @@ const Contact = () => {
                                         type="text"
                                         value={formData.name}
                                         onChange={(e) => setFormData({ ...formData, name: e.target.value })}
-                                        className={`w-full bg-slate-50 border ${errors.name ? 'border-red-500' : 'border-slate-200'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium`}
+                                        className={`w-full bg-slate-50/80 border ${errors.name ? 'border-red-500' : 'border-slate-200/80'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white focus:shadow-lg focus:shadow-blue-500/10 transition-all outline-none font-medium`}
                                         placeholder="Your Name"
                                     />
                                     {errors.name && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.name}</p>}
@@ -876,7 +809,7 @@ const Contact = () => {
                                         type="email"
                                         value={formData.email}
                                         onChange={(e) => setFormData({ ...formData, email: e.target.value })}
-                                        className={`w-full bg-slate-50 border ${errors.email ? 'border-red-500' : 'border-slate-200'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium`}
+                                        className={`w-full bg-slate-50/80 border ${errors.email ? 'border-red-500' : 'border-slate-200/80'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white focus:shadow-lg focus:shadow-blue-500/10 transition-all outline-none font-medium`}
                                         placeholder="Email Address"
                                     />
                                     {errors.email && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.email}</p>}
@@ -887,7 +820,7 @@ const Contact = () => {
                                 <select
                                     value={formData.course}
                                     onChange={(e) => setFormData({ ...formData, course: e.target.value })}
-                                    className="w-full bg-slate-50 border border-slate-200 text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium"
+                                    className="w-full bg-slate-50/80 border border-slate-200/80 text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white focus:shadow-lg focus:shadow-blue-500/10 transition-all outline-none font-medium"
                                 >
                                     <option>IT Infrastructure & System Administration</option>
                                     <option>Professional Cyber Security Programs</option>
@@ -901,7 +834,7 @@ const Contact = () => {
                                     rows="4"
                                     value={formData.message}
                                     onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-                                    className={`w-full bg-slate-50 border ${errors.message ? 'border-red-500' : 'border-slate-200'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white transition-all outline-none font-medium`}
+                                    className={`w-full bg-slate-50/80 border ${errors.message ? 'border-red-500' : 'border-slate-200/80'} text-slate-900 rounded-xl p-4 focus:border-blue-600 focus:bg-white focus:shadow-lg focus:shadow-blue-500/10 transition-all outline-none font-medium`}
                                     placeholder="Tell us about your goals..."
                                 ></textarea>
                                 {errors.message && <p className="text-red-500 text-[10px] mt-1 font-bold">{errors.message}</p>}
@@ -1007,23 +940,7 @@ export default function AppLight({ isDarkMode, toggleTheme }) {
     const [activeTab, setActiveTab] = useState(0);
 
     useEffect(() => {
-        const handleContextMenu = (e) => e.preventDefault();
-        const handleKeyDown = (e) => {
-            if (
-                (e.ctrlKey && (e.key === 'c' || e.key === 'u' || e.key === 's')) ||
-                e.key === 'F12'
-            ) {
-                e.preventDefault();
-            }
-        };
-
-        document.addEventListener('contextmenu', handleContextMenu);
-        document.addEventListener('keydown', handleKeyDown);
-
-        return () => {
-            document.removeEventListener('contextmenu', handleContextMenu);
-            document.removeEventListener('keydown', handleKeyDown);
-        };
+        window.scrollTo(0, 0);
     }, []);
 
     return (

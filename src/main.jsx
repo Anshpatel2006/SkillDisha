@@ -8,9 +8,12 @@ const Root = () => {
   const [isDarkMode, setIsDarkMode] = useState(() => {
     if (typeof window !== 'undefined') {
       const saved = localStorage.getItem('theme');
-      return saved === 'dark' || (!saved && window.matchMedia('(prefers-color-scheme: dark)').matches);
+      if (saved) {
+        return saved === 'dark';
+      }
+      return true; // Default to dark theme
     }
-    return false;
+    return true;
   });
 
   const toggleTheme = () => {

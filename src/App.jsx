@@ -4,6 +4,8 @@ import logo1 from './assets/Logo.jpg-removebg-preview.png'
 import logoTechLab from './assets/SkillDisha_TechLab_JPG.jpg.jpeg';
 import homePic1 from './assets/Home_Page_Pic_1.jpeg';
 import homePic2 from './assets/Home_Page_Pic_2.jpeg';
+import homePic3 from './assets/Home_Page_Pic_3.jpeg';
+import homePic4 from './assets/Home_Page_Pic_4.jpeg';
 import profilePic from './assets/Profile_Pic.jpeg';
 import aboutPic from './assets/About_us.jpeg';
 import {
@@ -13,7 +15,7 @@ import {
   Menu, X, ArrowRight, ChevronDown,
   Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
 } from 'lucide-react';
-import { WHATSAPP_NUMBER, handleWhatsApp, navLinks, categories, achievements, programs } from './constants';
+import { WHATSAPP_NUMBER, SECONDARY_PHONE_NUMBER, handleWhatsApp, handleCall, navLinks, categories, achievements, programs } from './constants';
 
 
 
@@ -215,6 +217,8 @@ const ImageSlider = () => {
   const images = [
     homePic1,
     homePic2,
+    homePic3,
+    homePic4,
   ];
 
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -783,11 +787,14 @@ const Contact = () => {
             </p>
 
             <div className="space-y-6">
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors duration-500"><Phone className="text-emerald-600 dark:text-emerald-400" /></div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors duration-500"><Phone className="text-emerald-600 dark:text-emerald-400 mt-1" /></div>
                 <div>
                   <p className="text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Call Us</p>
-                  <a href={`tel:+${WHATSAPP_NUMBER}`} className="font-bold text-slate-700 dark:text-slate-300 text-lg hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+91 63563 75745</a>
+                  <div className="flex flex-col gap-1 mt-1">
+                    <button onClick={() => handleCall(WHATSAPP_NUMBER)} className="text-left font-bold text-slate-700 dark:text-slate-300 text-lg hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+91 63563 75745</button>
+                    <button onClick={() => handleCall(SECONDARY_PHONE_NUMBER)} className="text-left font-bold text-slate-700 dark:text-slate-300 text-lg hover:text-emerald-600 dark:hover:text-emerald-400 transition-colors">+91 97731 62289</button>
+                  </div>
                 </div>
               </div>
               <div className="flex items-center gap-4">

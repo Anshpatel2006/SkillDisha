@@ -1,8 +1,13 @@
 export const WHATSAPP_NUMBER = "916356375745";
+export const SECONDARY_PHONE_NUMBER = "919773162289";
 
 export const handleWhatsApp = (message = "Hello SkillDisha! I'm interested in learning more about your programs.") => {
     const url = `https://wa.me/${WHATSAPP_NUMBER}?text=${encodeURIComponent(message)}`;
     window.open(url, '_blank');
+};
+
+export const handleCall = (number = WHATSAPP_NUMBER) => {
+    window.location.href = `tel:+${number}`;
 };
 
 export const navLinks = [

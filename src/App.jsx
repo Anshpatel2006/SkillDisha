@@ -10,7 +10,7 @@ import profilePic from './assets/Profile_Pic.jpeg';
 import aboutPic from './assets/About_us.jpeg';
 import {
   Shield, Terminal, Trophy, Users,
-  ChevronRight, CheckCircle, Mail, Phone, MapPin,
+  ChevronLeft, ChevronRight, CheckCircle, Mail, Phone, MapPin,
   Github, Twitter, Linkedin,
   Menu, X, ArrowRight, ChevronDown,
   Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
@@ -279,10 +279,10 @@ const Hero = () => {
             </span>
             Batch Starting Soon
           </div>
-          <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-slate-900 dark:text-slate-50">
-            Unlocking Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">SkillDisha.</span>
+          <h1 className="text-5xl lg:text-7xl font-bold leading-tight mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
+            Unlocking Potential with <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">SkillDisha.</span>
           </h1>
-          <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 max-w-xl font-medium">
+          <p className="text-slate-600 dark:text-slate-400 text-lg mb-8 max-w-xl font-medium text-justify">
             SkillDisha empowers students and professionals with practical, industry-focused skills that turn potential into performance. We help learners build confidence, knowledge, and career-ready expertise for real-world success.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -308,28 +308,22 @@ const Hero = () => {
           transition={{ duration: 0.8 }}
           className="relative"
         >
-          <div className="relative z-10 glass rounded-3xl p-8 border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden">
-            <div className="flex gap-4 mb-6">
-              <div className="flex -space-x-3">
-                {[1, 2, 3, 4].map(i => (
-                  <div key={i} className="w-10 h-10 rounded-full bg-slate-200 dark:bg-slate-800 border-2 border-white dark:border-slate-900 overflow-hidden shadow-sm">
-                    <img src={`https://i.pravatar.cc/150?u=${i}`} alt="student" />
-                  </div>
-                ))}
+          <div className="relative z-10 glass rounded-[40px] p-2 border-slate-200 dark:border-slate-800 shadow-2xl overflow-hidden group">
+            <div className="bg-slate-950 dark:bg-black rounded-[32px] p-8 md:p-12 font-mono text-lg md:text-xl leading-relaxed overflow-hidden border border-slate-800 shadow-2xl relative">
+              <div className="flex gap-2 mb-8 opacity-50">
+                <div className="w-3 h-3 rounded-full bg-red-500"></div>
+                <div className="w-3 h-3 rounded-full bg-yellow-500"></div>
+                <div className="w-3 h-3 rounded-full bg-green-500"></div>
               </div>
-              <div>
-                <p className="text-sm font-bold text-slate-900 dark:text-slate-50">1,000+ Students</p>
-                <p className="text-xs text-slate-500 dark:text-slate-400 font-medium">Successfully Placed</p>
-              </div>
-            </div>
-            <div className="bg-slate-900 dark:bg-black/80 rounded-xl p-6 font-mono text-sm leading-relaxed overflow-hidden border border-slate-800 shadow-inner">
-              <p className="text-emerald-400">// Ethical Hacking Module</p>
-              <p className="text-blue-400">class SecurityScanner &#123;</p>
-              <p className="pl-4 text-slate-300">async scan(target) &#123;</p>
-              <p className="pl-8 text-slate-400">console.log(`Scanning $&#123;target&#125;...`);</p>
-              <p className="pl-8 text-emerald-400">return await vulnDB.check(target);</p>
-              <p className="pl-4 text-slate-300">&#125;</p>
-              <p className="text-blue-400">&#125;</p>
+              <p className="text-blue-500 mb-4 animate-pulse">// SkillDisha TechLab</p>
+              <p className="text-emerald-400">while (ambition &gt; obstacles) &#123;</p>
+              <p className="pl-6 text-slate-300">skills.grow();</p>
+              <p className="pl-6 text-slate-300">knowledge.expand();</p>
+              <p className="pl-6 text-blue-400">if (isReady) break;</p>
+              <p className="text-emerald-400">&#125;</p>
+              <p className="mt-8 text-blue-500 font-bold border-l-4 border-blue-600 pl-4 bg-blue-600/10 py-2 rounded-r-lg">
+                Your Career, Unlocked.
+              </p>
             </div>
           </div>
           <div className="absolute -top-10 -right-10 w-40 h-40 bg-blue-200 dark:bg-blue-900/20 rounded-full blur-3xl opacity-40 -z-10"></div>
@@ -348,7 +342,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
-          <h2 className="scroll-mt-30 text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+          <h2 className="scroll-mt-30 text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
             Professional Job Oriented Courses
           </h2>
           <p className="text-slate-600 dark:text-slate-400 max-w-5xl mx-auto text-lg font-medium leading-relaxed">
@@ -389,10 +383,6 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
                 <h3 className="text-3xl md:text-4xl font-bold mb-3 text-slate-900 dark:text-slate-50 leading-tight">
                   {programs[activeTab].title}
                 </h3>
-                <div className="flex items-center gap-2 text-blue-600 dark:text-blue-400 font-bold mb-4">
-                  <Terminal size={22} />
-                  <span>Duration: {programs[activeTab].duration}</span>
-                </div>
                 <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed text-lg max-w-4xl font-medium">
                   {programs[activeTab].description}
                 </p>
@@ -428,12 +418,8 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
                   <h4 className="font-bold text-slate-900 dark:text-slate-50 mb-2 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">
                     {module.title}
                   </h4>
-                  {module.duration && (
-                    <p className="text-xs font-bold text-emerald-600 dark:text-emerald-400 mb-3">
-                      Duration: {module.duration}
-                    </p>
-                  )}
-                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium">
+
+                  <p className="text-sm text-slate-500 dark:text-slate-400 leading-relaxed font-medium text-justify">
                     {module.desc}
                   </p>
                 </motion.div>
@@ -476,7 +462,7 @@ const AboutSection = () => {
           <motion.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
-            className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed space-y-6"
+            className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed space-y-6 text-justify"
           >
             <p>
               SkillDisha TechLab is a professional IT training institute dedicated to delivering industry-oriented and job-focused courses in Cyber Security, Cloud Computing, Virtualization, Data Center, Networking, Windows Server, Linux Administration, Firewall Management, Storage Management and other IT Infrastructure.
@@ -504,7 +490,7 @@ const AboutSection = () => {
             </div>
             <div className="relative z-10">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-4">🎯 Mission</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
                 To bridge the gap between academics and industry by delivering practical, job-oriented IT training in Cyber Security, Cloud, and IT Infrastructure, enabling learners to build real-world skills and sustainable IT careers.
               </p>
             </div>
@@ -516,7 +502,7 @@ const AboutSection = () => {
           >
             <div className="relative z-10">
               <h3 className="text-2xl font-bold text-slate-900 dark:text-slate-50 mb-4">🌟 Vision</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium">
+              <p className="text-slate-600 dark:text-slate-400 leading-relaxed font-medium text-justify">
                 To be a trusted and industry-aligned IT training institute that creates skilled, confident, and job-ready professionals capable of meeting the evolving demands of the global IT industry.
               </p>
             </div>
@@ -544,7 +530,7 @@ const FeaturesSection = () => {
     <section id="features" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
-          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400">
+          <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
             Why SkillDisha?
           </h2>
         </div>
@@ -573,16 +559,17 @@ const CareerSection = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="bg-gradient-to-br from-blue-50 to-emerald-50 dark:from-blue-900/10 dark:to-emerald-900/10 rounded-[40px] p-8 md:p-16 border border-blue-100 dark:border-blue-800 transition-colors duration-500 relative shadow-sm overflow-hidden group">
           <div className="absolute top-0 right-0 p-8 text-blue-200/50 dark:text-blue-800/10 opacity-100 group-hover:scale-110 transition-transform"><Briefcase size={120} /></div>
-          <div className="max-w-3xl relative z-10">
-            <h2 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-600 dark:from-blue-400 dark:to-emerald-400 capitalize">
+          <div className="w-full relative z-10">
+            <h2 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500 capitalize">
               Launch your career across elite domains
             </h2>
             <div className="flex flex-wrap gap-4">
-              {["Cyber Security Analyst", "Penetration Tester", "Web Developer", "Full Stack Developer", "SOC Analyst", "Data Engineer"].map((job) => (
-                <div key={job} className="bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
+              {["Ethical Hacker / Penetration Tester", "Cyber Security Analyst (SOC Analyst)", "VAPT Engineer", "Bug Bounty Hunter / Security Researcher", "Web Application Security Analyst", "Digital Forensics Investigator", "Cloud Engineer (AWS / Azure)", "Data Center Engineer", "Virtualization Engineer (VMware / Hyper-V)", "System Engineer (Cloud Infrastructure)", "Microsoft 365 Administrator", "Network Administrator", "Server Administrator (Windows/Linux)", "IT Support Engineer / Desktop Support", "System Administrator", "Hardware & Networking Technician"].map((job) => (
+                <div key={job} className="grow text-center bg-white/80 dark:bg-slate-900/80 backdrop-blur-md px-6 py-3 rounded-full border border-slate-200 dark:border-slate-700 text-sm font-bold text-slate-700 dark:text-slate-300 shadow-sm hover:border-blue-300 dark:hover:border-blue-600 transition-colors">
                   {job}
                 </div>
               ))}
+              <div style={{ flexGrow: 100 }}></div>
             </div>
           </div>
         </div>
@@ -592,35 +579,96 @@ const CareerSection = () => {
 };
 
 const Testimonials = () => {
+  const [currentIndex, setCurrentIndex] = useState(0);
+  const reviews = [
+    { name: "Rahul Patil", text: "I am currently pursuing my VAPT (Vulnerability Assessment & Penetration Testing) internship at Skilldisha Tech Lab. The training is highly practical and industry-oriented. The mentors are very supportive and explain concepts clearly. I am getting hands-on experience with real-world tools and techniques, which is improving my cybersecurity skills significantly. I highly recommend this institute to anyone interested in ethical hacking." },
+    { name: "Sahil Hiwale", text: "After my cybersecurity training in SkillDisha TechLab, I am more confident in my skills in cybersecurity. The training is very practical and follows industry standards, making it a very interesting and beneficial learning experience. The faculty is very supportive and helps in ensuring that each and every concept is understood by the student. I had very little knowledge of cybersecurity before I started my training in SkillDisha TechLab, but now I am confident and ready to make use of my skills. The methodology is very simple and easy to follow. I would highly recommend SkillDisha TechLab for anyone looking to gain a strong base in cybersecurity." },
+    { name: "Aman K.", text: "The placement support didn't just get me a job, it got me my dream career path at SkillDisha." },
+    { name: "Siddharth M.", text: "The real-world projects gave me the confidence to handle complex infrastructure. Highly recommended!" },
+    { name: "Anjali P.", text: "I explored deeper into VAPT thanks to the expert guidance here. Truly a career-transforming experience." }
+  ];
+
+  const nextSlide = () => {
+    setCurrentIndex((prev) => (prev + 1) % reviews.length);
+  };
+
+  const prevSlide = () => {
+    setCurrentIndex((prev) => (prev - 1 + reviews.length) % reviews.length);
+  };
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      nextSlide();
+    }, 5000);
+    return () => clearInterval(timer);
+  }, [currentIndex]);
+
   return (
-    <section className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
-        <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
-          Success Stories
+        <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
+          Student Reviews
         </h2>
-        <div className="grid md:grid-cols-3 gap-8">
-          {[
-            { name: "Rahul S.", role: "Security Analyst at Google", text: "The hands-on lab sessions were game-changers for me. SkillDisha's curriculum is years ahead." },
-            { name: "Priya V.", role: "Software Engineer at Meta", text: "From zero coding knowledge to building full-stack apps in 4 months. The mentorship is exceptional." },
-            { name: "Aman K.", role: "SOC Analyst at TCS", text: "The placement support didn't just get me a job, it got me my dream career path at SkillDisha." }
-          ].map((t, i) => (
-            <div key={i} className="bg-white dark:bg-slate-900/50 p-8 rounded-3xl relative border border-slate-100 dark:border-slate-800 shadow-sm hover:shadow-xl dark:hover:shadow-blue-900/20 transition-all font-inter">
-              <MessageSquare className="absolute top-8 right-8 text-blue-100 dark:text-blue-800/10" size={40} />
-              <div className="flex gap-1 text-orange-400 mb-4">
-                {[1, 2, 3, 4, 5].map(s => <small key={s} className="text-lg">★</small>)}
-              </div>
-              <p className="text-slate-600 dark:text-slate-400 mb-6 font-medium italic leading-relaxed">"{t.text}"</p>
-              <div className="flex items-center gap-4">
-                <div className="w-12 h-12 rounded-full bg-blue-600 flex items-center justify-center text-white font-bold">
-                  {t.name.split(' ')[0][0]}
+
+        <div className="relative max-w-4xl mx-auto">
+          {/* Navigation Arrows */}
+          <div className="absolute top-1/2 -translate-y-1/2 -left-4 -right-4 md:-left-12 md:-right-12 lg:-left-20 lg:-right-20 flex justify-between z-20 pointer-events-none">
+            <button
+              onClick={prevSlide}
+              className="pointer-events-auto p-3 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-slate-800 transition-all shadow-xl hover:scale-110 active:scale-95"
+            >
+              <ChevronLeft size={24} />
+            </button>
+
+            <button
+              onClick={nextSlide}
+              className="pointer-events-auto p-3 rounded-full bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 text-slate-600 dark:text-slate-400 hover:bg-blue-50 dark:hover:bg-slate-800 transition-all shadow-xl hover:scale-110 active:scale-95"
+            >
+              <ChevronRight size={24} />
+            </button>
+          </div>
+
+          <div className="overflow-hidden px-4">
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={currentIndex}
+                initial={{ opacity: 0, x: 50 }}
+                animate={{ opacity: 1, x: 0 }}
+                exit={{ opacity: 0, x: -50 }}
+                transition={{ duration: 0.4, ease: "circOut" }}
+                className="bg-white dark:bg-slate-900/50 p-8 md:p-16 rounded-[48px] relative border border-slate-100 dark:border-slate-800 shadow-2xl dark:shadow-blue-900/10 font-inter"
+              >
+                <MessageSquare className="absolute top-10 right-10 text-blue-100 dark:text-blue-800/10" size={80} />
+                <div className="flex gap-1 text-orange-400 mb-8">
+                  {[1, 2, 3, 4, 5].map(s => <small key={s} className="text-2xl">★</small>)}
                 </div>
-                <div>
-                  <h4 className="font-bold text-slate-900 dark:text-slate-50">{t.name}</h4>
-                  <p className="text-sm text-slate-500 dark:text-slate-400 font-bold">{t.role}</p>
+                <p className="text-lg md:text-xl text-slate-600 dark:text-slate-300 mb-8 font-medium italic leading-relaxed">
+                  "{reviews[currentIndex].text}"
+                </p>
+                <div className="flex items-center gap-6">
+                  <div className="w-16 h-16 rounded-2xl bg-gradient-to-br from-blue-600 to-indigo-600 flex items-center justify-center text-white text-2xl font-black shadow-lg shadow-blue-200 dark:shadow-blue-900/40">
+                    {reviews[currentIndex].name.split(' ')[0][0]}
+                  </div>
+                  <div>
+                    <h4 className="text-xl font-black text-slate-900 dark:text-slate-50">{reviews[currentIndex].name}</h4>
+                    
+                  </div>
                 </div>
-              </div>
-            </div>
-          ))}
+              </motion.div>
+            </AnimatePresence>
+          </div>
+
+          {/* Indicators */}
+          <div className="flex justify-center gap-3 mt-12">
+            {reviews.map((_, i) => (
+              <button
+                key={i}
+                onClick={() => setCurrentIndex(i)}
+                className={`transition-all duration-500 rounded-full ${currentIndex === i ? 'w-12 h-3 bg-blue-600 shadow-lg shadow-blue-200 dark:shadow-blue-900/40' : 'w-3 h-3 bg-slate-200 dark:bg-slate-800 hover:bg-blue-300'
+                  }`}
+              />
+            ))}
+          </div>
         </div>
       </div>
     </section>
@@ -652,7 +700,7 @@ const AchievementCard = ({ item, idx }) => {
         <CheckCircle size={18} strokeWidth={3} />
       </div>
       <p className="text-slate-700 dark:text-slate-200 text-sm leading-relaxed">
-        <span className="font-extrabold text-slate-950 dark:text-white mr-1">{title}</span>
+        <span className="mr-1">{title}</span>
         {rest}
       </p>
     </motion.div>
@@ -679,7 +727,7 @@ const TrainerSection = () => {
                   alt="Shailesh Patel"
                   className="w-full aspect-[4/5] object-cover group-hover:scale-105 transition-transform duration-700"
                 />
-                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent p-6 pt-12">
+                <div className="absolute inset-x-0 bottom-0 bg-gradient-to-t from-slate-900/90 to-transparent px-6 pb-2 pt-16 text-center">
                   <h3 className="text-xl font-bold text-white mb-0.5 font-inter uppercase tracking-tight">Shailesh Patel</h3>
                 </div>
               </div>
@@ -695,10 +743,10 @@ const TrainerSection = () => {
                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 dark:bg-blue-900/30 border border-blue-100 dark:border-blue-800 text-blue-700 dark:text-blue-300 text-xs font-bold mb-4 transition-colors duration-500">
                   <Trophy size={14} /> Certified, Experienced, Recognized
                 </div>
-                <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 text-slate-900 dark:text-slate-50 leading-tight">
+                <h2 className="text-3xl lg:text-5xl font-extrabold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500 leading-tight">
                   Know Your Trainer
                 </h2>
-                <p className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed font-inter italic">
+                <p className="text-slate-600 dark:text-slate-400 text-lg font-medium leading-relaxed font-inter italic text-justify">
                   With over two decades of industry leadership, Shailesh Patel has dedicated his career to building IT experts. His practical, hands-on approach has empowered thousands of professionals across corporate and government sectors.
                 </p>
               </motion.div>
@@ -779,10 +827,10 @@ const Contact = () => {
       <div className="max-w-7xl mx-auto px-6">
         <div className="grid lg:grid-cols-2 gap-16 items-center">
           <div>
-            <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-indigo-600 dark:from-blue-400 dark:to-indigo-400">
+            <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
               Get in Touch
             </h2>
-            <p className="text-slate-600 dark:text-slate-400 text-lg font-medium mb-10 leading-relaxed font-inter">
+            <p className="text-slate-600 dark:text-slate-400 text-lg font-medium mb-10 leading-relaxed font-inter text-justify">
               Ready to start your IT journey? Our experts are here to guide you through every step of your professional development.
             </p>
 
@@ -797,11 +845,14 @@ const Contact = () => {
                   </div>
                 </div>
               </div>
-              <div className="flex items-center gap-4">
-                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors duration-500"><MapPin className="text-rose-600 dark:text-rose-400" /></div>
+              <div className="flex items-start gap-4">
+                <div className="p-3 bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-100 dark:border-slate-800 transition-colors duration-500 mt-1"><MapPin className="text-rose-600 dark:text-rose-400" /></div>
                 <div>
-                  <p className="text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider">Location</p>
-                  <p className="font-bold text-slate-900 dark:text-slate-100 text-lg font-inter">203 , Atmos , Beside Sindhu Seva Samiti School, Anand Mahal Road , Adajan , Surat - 395009.</p>
+                  <p className="text-xs text-slate-400 dark:text-slate-500 font-bold uppercase tracking-wider mb-1">Location</p>
+                  <a href="https://maps.app.goo.gl/CZzgxDNuwZAgs1Qw9" target="_blank" rel="noopener noreferrer" className="font-bold text-slate-900 dark:text-slate-100 text-lg font-inter hover:text-blue-600 dark:hover:text-blue-400 transition-colors block leading-snug">
+                    203 , Atmos , Beside Sindhu Seva Samiti School, Anand Mahal Road , Adajan , Surat - 395009.
+                    <span className="block mt-4 text-sm font-normal text-slate-500 dark:text-slate-400 hover:underline">(Click on the address to open it in Google Maps.)</span>
+                  </a>
                 </div>
               </div>
             </div>
@@ -812,6 +863,8 @@ const Contact = () => {
             >
               Chat on WhatsApp <ArrowRight size={18} />
             </button>
+
+
           </div>
 
           <div className="bg-white dark:bg-slate-900 p-10 rounded-[40px] border border-slate-100 dark:border-slate-800 shadow-2xl transition-colors duration-500">

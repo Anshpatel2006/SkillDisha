@@ -11,7 +11,7 @@ import aboutPic from './assets/About_us.jpeg';
 import {
   Shield, Terminal, Trophy, Users,
   ChevronLeft, ChevronRight, CheckCircle, Mail, Phone, MapPin,
-  Github, Twitter, Linkedin, Instagram,
+  Github, Twitter, Linkedin, Instagram, Facebook,
   Menu, X, ArrowRight, ChevronDown,
   Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
 } from 'lucide-react';
@@ -96,9 +96,11 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
               <Mail size={14} />
               <span className="hidden md:inline">info@skilldishatechlab.com</span>
             </a>
-            <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
+            <a href="https://www.facebook.com/SkilldishaTechLab" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors ml-2">
+              <Facebook size={14} />
+            </a>
+            <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors">
               <Instagram size={14} />
-              <span className="hidden md:inline">Instagram</span>
             </a>
           </div>
         </div>
@@ -290,7 +292,7 @@ const ImageSlider = () => {
 
 const Hero = () => {
   return (
-    <section className="relative pt-24 md:pt-32 pb-12 md:pb-20 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section className="relative pt-24 md:pt-32 pb-6 md:pb-10 overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="absolute top-0 left-0 w-full h-full -z-10 bg-[radial-gradient(circle_at_50%_40%,#eff6ff_0%,#ffffff_100%)] dark:bg-[radial-gradient(circle_at_50%_40%,#0f172a_0%,#020617_100%)]"></div>
       <div className="absolute top-1/4 -left-20 w-80 h-80 bg-blue-100 dark:bg-blue-900/10 rounded-full blur-[120px] opacity-60"></div>
       <div className="absolute bottom-1/4 -right-20 w-80 h-80 bg-emerald-50 dark:bg-emerald-900/10 rounded-full blur-[120px] opacity-60"></div>
@@ -367,7 +369,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
 
   return (
-    <section id="courses" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section id="courses" className="pt-24 pb-6 md:pb-10 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <span className="text-blue-600 dark:text-blue-400 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
@@ -463,7 +465,7 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
 const AboutSection = () => {
   return (
-    <section id="about" className="py-24 scroll-mt-[20px] relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section id="about" className="pt-8 pb-12 scroll-mt-36 relative overflow-hidden bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <h2 className=" text-4xl lg:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500 leading-tight " >
           About SkillDisha TechLab
@@ -556,7 +558,7 @@ const FeaturesSection = () => {
   ];
 
   return (
-    <section id="features" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500">
+    <section id="features" className="pt-8 pb-12 scroll-mt-36 bg-white dark:bg-slate-950 transition-colors duration-500">
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-16">
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 dark:from-blue-400 dark:via-emerald-400 dark:to-blue-500">
@@ -740,7 +742,7 @@ const TrainerSection = () => {
 
 
   return (
-    <section id="trainer" className="py-24 scroll-mt-[20px] bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
+    <section id="trainer" className="py-12 scroll-mt-36 bg-white dark:bg-slate-950 transition-colors duration-500 overflow-hidden">
       <div className="max-w-7xl mx-auto px-6">
         <div className="flex flex-col gap-16">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">

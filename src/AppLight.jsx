@@ -79,29 +79,31 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
     return (
         <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
             {/* Small Top Navbar */}
-            <div className="bg-slate-900 text-slate-300 text-xs py-2 px-6 hidden sm:flex justify-between items-center font-medium border-b border-slate-800">
-                <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
-                    <div className="flex items-center gap-6">
-                        <a href="tel:+916356375745" className="flex items-center gap-1.5 hover:text-white transition-colors">
-                            <Phone size={12} />
+            <div className="bg-slate-900 text-slate-300 text-[10px] sm:text-xs py-2 px-3 sm:px-6 flex justify-between items-center font-medium border-b border-slate-800 overflow-x-auto [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+                <div className="max-w-7xl mx-auto w-full flex justify-between items-center min-w-max gap-4">
+                    <div className="flex items-center gap-3 sm:gap-6">
+                        <a href="tel:+916356375745" className="flex items-center gap-1 sm:gap-1.5 hover:text-white transition-colors">
+                            <Phone size={12} className="w-3 h-3 sm:w-auto" />
                             <span>+91 63563 75745</span>
                         </a>
-                        <a href="tel:+919773162289" className="flex items-center gap-1.5 hover:text-white transition-colors">
-                            <Phone size={12} />
+                        <a href="tel:+919773162289" className="flex items-center gap-1 sm:gap-1.5 hover:text-white transition-colors">
+                            <Phone size={12} className="w-3 h-3 sm:w-auto" />
                             <span>+91 97731 62289</span>
                         </a>
                     </div>
-                    <div className="flex items-center gap-4">
-                        <a href="mailto:info@skilldishatechlab.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
-                            <Mail size={14} />
-                            <span className="hidden md:inline">info@skilldishatechlab.com</span>
+                    <div className="flex items-center gap-3 sm:gap-4 flex-shrink-0">
+                        <a href="mailto:info@skilldishatechlab.com" className="flex items-center gap-1 sm:gap-1.5 hover:text-white transition-colors">
+                            <Mail size={14} className="w-3.5 h-3.5 sm:w-auto" />
+                            <span className="hidden sm:inline">info@skilldishatechlab.com</span>
                         </a>
-                        <a href="https://www.facebook.com/SkilldishaTechLab" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors ml-2">
-                            <Facebook size={14} />
-                        </a>
-                        <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors">
-                            <Instagram size={14} />
-                        </a>
+                        <div className="flex items-center gap-2 sm:gap-0 sm:ml-2">
+                            <a href="https://www.facebook.com/SkilldishaTechLab" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors">
+                                <Facebook size={14} className="w-3.5 h-3.5 sm:w-auto" />
+                            </a>
+                            <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center hover:text-white transition-colors sm:ml-2">
+                                <Instagram size={14} className="w-3.5 h-3.5 sm:w-auto" />
+                            </a>
+                        </div>
                     </div>
                 </div>
             </div>

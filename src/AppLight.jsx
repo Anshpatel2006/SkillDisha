@@ -11,7 +11,7 @@ import aboutPic from './assets/About_us.jpeg';
 import {
     Shield, Terminal, Trophy, Users,
     ChevronLeft, ChevronRight, CheckCircle, Mail, Phone, MapPin,
-    Github, Twitter, Linkedin,
+    Github, Twitter, Linkedin, Instagram,
     Menu, X, ArrowRight, ChevronDown,
     Sun, Moon, Code, MessageSquare, GraduationCap, Briefcase
 } from 'lucide-react';
@@ -77,11 +77,39 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
     };
 
     return (
-        <nav className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 bg-white/95 backdrop-blur-md shadow-[0_8px_30px_rgb(0,0,0,0.04)] py-4 border-b border-slate-100`}>
-            <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
-                <a href="#" className="flex items-center gap-2 group">
-                    <img src={logo1} alt="SkillDisha TechLab" className="h-16 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
-                </a>
+        <div className="fixed top-0 left-0 w-full z-50 transition-all duration-300 shadow-[0_8px_30px_rgb(0,0,0,0.04)]">
+            {/* Small Top Navbar */}
+            <div className="bg-slate-900 text-slate-300 text-xs py-2 px-6 hidden sm:flex justify-between items-center font-medium border-b border-slate-800">
+                <div className="max-w-7xl mx-auto w-full flex justify-between items-center">
+                    <div className="flex items-center gap-6">
+                        <a href="tel:+916356375745" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                            <Phone size={12} />
+                            <span>+91 63563 75745</span>
+                        </a>
+                        <a href="tel:+919773162289" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                            <Phone size={12} />
+                            <span>+91 97731 62289</span>
+                        </a>
+                    </div>
+                    <div className="flex items-center gap-4">
+                        <a href="mailto:skilldishatechlab@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                            <Mail size={14} />
+                            <span className="hidden md:inline">skilldishatechlab@gmail.com</span>
+                        </a>
+                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
+                            <Instagram size={14} />
+                            <span className="hidden md:inline">Instagram</span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            {/* Main Navbar */}
+            <nav className={`w-full bg-white/95 backdrop-blur-md py-4 border-b border-slate-100`}>
+                <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
+                    <a href="#" className="flex items-center gap-2 group">
+                        <img src={logo1} alt="SkillDisha TechLab" className="h-16 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
+                    </a>
 
                 {/* Desktop Links */}
                 <div className="hidden md:flex items-center gap-8">
@@ -212,7 +240,8 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                     </motion.div>
                 )}
             </AnimatePresence>
-        </nav>
+            </nav>
+        </div>
     );
 };
 
@@ -234,7 +263,7 @@ const ImageSlider = () => {
     }, [images.length]);
 
     return (
-        <div className="relative h-[400px] md:h-[600px] w-full overflow-hidden mt-[96px]">
+        <div className="relative h-[250px] sm:h-[400px] md:h-[600px] w-full overflow-hidden mt-[96px]">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={currentIndex}

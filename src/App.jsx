@@ -92,11 +92,11 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
             </a>
           </div>
           <div className="flex items-center gap-4">
-            <a href="mailto:skilldishatechlab@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+            <a href="mailto:info@skilldishatechlab.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
               <Mail size={14} />
-              <span className="hidden md:inline">skilldishatechlab@gmail.com</span>
+              <span className="hidden md:inline">info@skilldishatechlab.com</span>
             </a>
-            <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
+            <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
               <Instagram size={14} />
               <span className="hidden md:inline">Instagram</span>
             </a>

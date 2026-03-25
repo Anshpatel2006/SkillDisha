@@ -92,11 +92,11 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                         </a>
                     </div>
                     <div className="flex items-center gap-4">
-                        <a href="mailto:skilldishatechlab@gmail.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
+                        <a href="mailto:info@skilldishatechlab.com" className="flex items-center gap-1.5 hover:text-white transition-colors">
                             <Mail size={14} />
-                            <span className="hidden md:inline">skilldishatechlab@gmail.com</span>
+                            <span className="hidden md:inline">info@skilldishatechlab.com</span>
                         </a>
-                        <a href="https://instagram.com/" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
+                        <a href="https://www.instagram.com/skilldishatechlab?igsh=empuaGg0MWQ3dGdt" target="_blank" rel="noopener noreferrer" className="flex items-center gap-1.5 hover:text-white transition-colors ml-2">
                             <Instagram size={14} />
                             <span className="hidden md:inline">Instagram</span>
                         </a>
@@ -108,7 +108,7 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
             <nav className={`w-full bg-white/95 backdrop-blur-md py-4 border-b border-slate-100`}>
                 <div className="max-w-7xl mx-auto px-6 flex justify-between items-center">
                     <a href="#" className="flex items-center gap-2 group">
-                        <img src={logo1} alt="SkillDisha TechLab" className="h-16 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
+                        <img src={logo1} alt="SkillDisha TechLab" className="h-20 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
                     </a>
 
                 {/* Desktop Links */}
@@ -263,7 +263,7 @@ const ImageSlider = () => {
     }, [images.length]);
 
     return (
-        <div className="relative h-[250px] sm:h-[400px] md:h-[600px] w-full overflow-hidden mt-[96px]">
+        <div className="relative h-[250px] sm:h-[400px] md:h-[600px] w-full overflow-hidden mt-[112px]">
             <AnimatePresence mode="wait">
                 <motion.img
                     key={currentIndex}

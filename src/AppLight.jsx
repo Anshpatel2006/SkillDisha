@@ -115,135 +115,135 @@ const Navbar = ({ setActiveTab, isDarkMode, toggleTheme }) => {
                         <img src={logo1} alt="SkillDisha TechLab" className="h-20 w-auto object-contain rounded-lg transition-transform group-hover:scale-105" />
                     </a>
 
-                {/* Desktop Links */}
-                <div className="hidden md:flex items-center gap-8">
-                    <div
-                        className="relative group"
-                        onMouseEnter={() => setIsDropdownOpen(true)}
-                        onMouseLeave={() => setIsDropdownOpen(false)}
-                    >
-                        <button className={`flex items-center gap-1 transition-all duration-300 font-bold py-2 relative text-slate-800`}>
-                            Courses <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
-                            <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                    {/* Desktop Links */}
+                    <div className="hidden md:flex items-center gap-8">
+                        <div
+                            className="relative group"
+                            onMouseEnter={() => setIsDropdownOpen(true)}
+                            onMouseLeave={() => setIsDropdownOpen(false)}
+                        >
+                            <button className={`flex items-center gap-1 transition-all duration-300 font-bold py-2 relative text-slate-800`}>
+                                Courses <ChevronDown size={14} className={`transition-transform duration-300 ${isDropdownOpen ? 'rotate-180' : ''}`} />
+                                <span className="absolute bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                            </button>
+                            <AnimatePresence>
+                                {isDropdownOpen && (
+                                    <motion.div
+                                        initial={{ opacity: 0, y: 10 }}
+                                        animate={{ opacity: 1, y: 0 }}
+                                        exit={{ opacity: 0, y: 10 }}
+                                        className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100 p-3 mt-2"
+                                    >
+                                        {categories.map((cat) => (
+                                            <a
+                                                key={cat.name}
+                                                href={cat.href}
+                                                onClick={() => handleProgramClick(cat.index)}
+                                                className="group/item block px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-all text-sm font-bold flex items-center justify-between"
+                                            >
+                                                <span>{cat.name}</span>
+                                            </a>
+                                        ))}
+                                    </motion.div>
+                                )}
+                            </AnimatePresence>
+                        </div>
+
+                        {navLinks.map((link) => (
+                            <a key={link.name} href={link.href} className={`transition-colors font-bold relative group text-slate-800`}>
+                                {link.name}
+                                <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
+                            </a>
+                        ))}
+                        <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-black transition-all text-slate-900`}>
+                            <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-blue-50 text-blue-600`}>
+                                <Phone size={18} />
+                            </div>
+                            <span className="text-sm">63563 75745</span>
+                        </a>
+                        <div className={`h-6 w-px mx-1 bg-slate-200`}></div>
+                        <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                        <button
+                            onClick={() => handleWhatsApp()}
+                            className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-200 active:scale-95"
+                        >
+                            Join Now
                         </button>
-                        <AnimatePresence>
-                            {isDropdownOpen && (
-                                <motion.div
-                                    initial={{ opacity: 0, y: 10 }}
-                                    animate={{ opacity: 1, y: 0 }}
-                                    exit={{ opacity: 0, y: 10 }}
-                                    className="absolute top-full left-0 w-64 bg-white rounded-2xl shadow-[0_10px_40px_rgba(0,0,0,0.08)] border border-slate-100 p-3 mt-2"
-                                >
-                                    {categories.map((cat) => (
-                                        <a
-                                            key={cat.name}
-                                            href={cat.href}
-                                            onClick={() => handleProgramClick(cat.index)}
-                                            className="group/item block px-4 py-3 rounded-xl hover:bg-blue-50 text-slate-700 hover:text-blue-600 transition-all text-sm font-bold flex items-center justify-between"
-                                        >
-                                            <span>{cat.name}</span>
-                                        </a>
-                                    ))}
-                                </motion.div>
-                            )}
-                        </AnimatePresence>
                     </div>
 
-                    {navLinks.map((link) => (
-                        <a key={link.name} href={link.href} className={`transition-colors font-bold relative group text-slate-800`}>
-                            {link.name}
-                            <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all duration-300 group-hover:w-full"></span>
-                        </a>
-                    ))}
-                    <a href="tel:+916356375745" className={`hidden lg:flex items-center gap-2 font-black transition-all text-slate-900`}>
-                        <div className={`w-10 h-10 rounded-full flex items-center justify-center shadow-sm bg-blue-50 text-blue-600`}>
-                            <Phone size={18} />
-                        </div>
-                        <span className="text-sm">63563 75745</span>
-                    </a>
-                    <div className={`h-6 w-px mx-1 bg-slate-200`}></div>
-                    <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
-                    <button
-                        onClick={() => handleWhatsApp()}
-                        className="bg-blue-600 hover:bg-blue-700 text-white px-8 py-3 rounded-xl font-bold transition-all shadow-lg shadow-blue-200 active:scale-95"
-                    >
-                        Join Now
+                    {/* Mobile Toggle */}
+                    <button className={`md:hidden p-2 rounded-xl transition-colors text-slate-900 bg-slate-50`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
+                        {isMobileMenuOpen ? <X /> : <Menu />}
                     </button>
                 </div>
 
-                {/* Mobile Toggle */}
-                <button className={`md:hidden p-2 rounded-xl transition-colors text-slate-900 bg-slate-50`} onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}>
-                    {isMobileMenuOpen ? <X /> : <Menu />}
-                </button>
-            </div>
-
-            {/* Mobile Menu */}
-            <AnimatePresence>
-                {isMobileMenuOpen && (
-                    <motion.div
-                        initial={{ opacity: 0, height: 0 }}
-                        animate={{ opacity: 1, height: 'auto' }}
-                        exit={{ opacity: 0, height: 0 }}
-                        className="absolute top-full left-0 w-full bg-white border-b border-slate-100 md:hidden overflow-y-auto max-h-[calc(100vh-80px)] shadow-2xl"
-                    >
-                        <div className="p-6 flex flex-col gap-4">
-                            <div className="space-y-1">
-                                <button
-                                    onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
-                                    className="w-full flex items-center justify-between text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
+                {/* Mobile Menu */}
+                <AnimatePresence>
+                    {isMobileMenuOpen && (
+                        <motion.div
+                            initial={{ opacity: 0, height: 0 }}
+                            animate={{ opacity: 1, height: 'auto' }}
+                            exit={{ opacity: 0, height: 0 }}
+                            className="absolute top-full left-0 w-full bg-white border-b border-slate-100 md:hidden overflow-y-auto max-h-[calc(100vh-80px)] shadow-2xl"
+                        >
+                            <div className="p-6 flex flex-col gap-4">
+                                <div className="space-y-1">
+                                    <button
+                                        onClick={() => setIsMobileProgramsOpen(!isMobileProgramsOpen)}
+                                        className="w-full flex items-center justify-between text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
+                                    >
+                                        Courses <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
+                                    </button>
+                                    <AnimatePresence>
+                                        {isMobileProgramsOpen && (
+                                            <motion.div
+                                                initial={{ opacity: 0, height: 0 }}
+                                                animate={{ opacity: 1, height: 'auto' }}
+                                                exit={{ opacity: 0, height: 0 }}
+                                                className="overflow-hidden pl-4 space-y-1"
+                                            >
+                                                {categories.map((cat) => (
+                                                    <a
+                                                        key={cat.name}
+                                                        href={cat.href}
+                                                        className="block text-slate-600 py-3 px-4 hover:text-blue-600 font-bold text-sm border-l-2 border-slate-100 hover:border-blue-600 transition-all font-inter"
+                                                        onClick={() => handleProgramClick(cat.index)}
+                                                    >
+                                                        {cat.name}
+                                                    </a>
+                                                ))}
+                                            </motion.div>
+                                        )}
+                                    </AnimatePresence>
+                                </div>
+                                <div className="h-px bg-slate-100 my-1"></div>
+                                {navLinks.map((link) => (
+                                    <a key={link.name} href={link.href} className="text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all" onClick={() => setIsMobileMenuOpen(false)}>
+                                        {link.name}
+                                    </a>
+                                ))}
+                                <a
+                                    href="tel:+916356375745"
+                                    className="flex items-center gap-3 text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
+                                    onClick={() => setIsMobileMenuOpen(false)}
                                 >
-                                    Courses <ChevronDown size={14} className={`transition-transform duration-200 ${isMobileProgramsOpen ? 'rotate-180' : ''}`} />
-                                </button>
-                                <AnimatePresence>
-                                    {isMobileProgramsOpen && (
-                                        <motion.div
-                                            initial={{ opacity: 0, height: 0 }}
-                                            animate={{ opacity: 1, height: 'auto' }}
-                                            exit={{ opacity: 0, height: 0 }}
-                                            className="overflow-hidden pl-4 space-y-1"
-                                        >
-                                            {categories.map((cat) => (
-                                                <a
-                                                    key={cat.name}
-                                                    href={cat.href}
-                                                    className="block text-slate-600 py-3 px-4 hover:text-blue-600 font-bold text-sm border-l-2 border-slate-100 hover:border-blue-600 transition-all font-inter"
-                                                    onClick={() => handleProgramClick(cat.index)}
-                                                >
-                                                    {cat.name}
-                                                </a>
-                                            ))}
-                                        </motion.div>
-                                    )}
-                                </AnimatePresence>
-                            </div>
-                            <div className="h-px bg-slate-100 my-1"></div>
-                            {navLinks.map((link) => (
-                                <a key={link.name} href={link.href} className="text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 hover:text-blue-600 transition-all" onClick={() => setIsMobileMenuOpen(false)}>
-                                    {link.name}
+                                    <Phone size={18} className="text-blue-600" />
+                                    <span>63563 75745</span>
                                 </a>
-                            ))}
-                            <a
-                                href="tel:+916356375745"
-                                className="flex items-center gap-3 text-slate-900 py-4 px-4 font-bold rounded-xl hover:bg-blue-50 transition-all"
-                                onClick={() => setIsMobileMenuOpen(false)}
-                            >
-                                <Phone size={18} className="text-blue-600" />
-                                <span>63563 75745</span>
-                            </a>
-                            <div className="flex justify-between items-center py-3 px-4">
-                                <span className="text-slate-700 font-bold">Theme</span>
-                                <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                                <div className="flex justify-between items-center py-3 px-4">
+                                    <span className="text-slate-700 font-bold">Theme</span>
+                                    <ThemeToggle isDarkMode={isDarkMode} toggleTheme={toggleTheme} />
+                                </div>
+                                <button
+                                    onClick={() => handleWhatsApp()}
+                                    className="bg-blue-600 text-white py-5 rounded-2xl font-black mt-2 shadow-xl shadow-blue-200"
+                                >
+                                    Get Expert Advice
+                                </button>
                             </div>
-                            <button
-                                onClick={() => handleWhatsApp()}
-                                className="bg-blue-600 text-white py-5 rounded-2xl font-black mt-2 shadow-xl shadow-blue-200"
-                            >
-                                Get Expert Advice
-                            </button>
-                        </div>
-                    </motion.div>
-                )}
-            </AnimatePresence>
+                        </motion.div>
+                    )}
+                </AnimatePresence>
             </nav>
         </div>
     );
@@ -374,9 +374,9 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
 
     return (
-        <section id="courses" className="pt-24 pb-6 md:pb-10 bg-[#fafbfc] overflow-hidden">
+        <section id="courses" className="pt-12 pb-4 md:pb-6 bg-[#fafbfc] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-20">
+                <div className="text-center mb-8">
                     <span className="text-blue-600 font-black uppercase tracking-[0.2em] text-xs mb-4 block">Our Training Catalog</span>
                     <h2 className="text-4xl lg:text-5xl font-bold mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
                         Professional Job Oriented Courses
@@ -462,9 +462,9 @@ const ProfessionalPrograms = ({ activeTab, setActiveTab }) => {
 
 const AboutSection = () => {
     return (
-        <section id="about" className="pt-8 pb-12 scroll-mt-36 relative overflow-hidden bg-white">
+        <section id="about" className="pt-4 pb-8 scroll-mt-36 relative overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-4xl lg:text-5xl font-bold mb-12 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 leading-tight">
+                <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 leading-tight">
                     About SkillDisha TechLab
                 </h2>
 
@@ -553,9 +553,9 @@ const FeaturesSection = () => {
     ];
 
     return (
-        <section id="features" className="pt-8 pb-12 scroll-mt-36 bg-white">
+        <section id="features" className="pt-4 pb-8 scroll-mt-36 bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="text-center mb-16">
+                <div className="text-center mb-8">
                     <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
                         Why SkillDisha?
                     </h2>
@@ -581,16 +581,16 @@ const FeaturesSection = () => {
 
 const CareerSection = () => {
     return (
-        <section className="py-24 relative overflow-hidden bg-white">
+        <section className="py-12 relative overflow-hidden bg-white">
             <div className="max-w-7xl mx-auto px-6">
-                <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-[40px] p-8 md:p-16 border border-blue-100 transition-colors duration-500 relative shadow-sm overflow-hidden group">
+                <div className="bg-gradient-to-br from-blue-50 to-emerald-50 rounded-[40px] p-6 md:p-12 border border-blue-100 transition-colors duration-500 relative shadow-sm overflow-hidden group">
                     <div className="absolute top-0 right-0 p-8 text-blue-200/50 opacity-100 group-hover:scale-110 transition-transform"><Briefcase size={120} /></div>
                     <div className="w-full relative z-10">
-                        <h2 className="text-4xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 capitalize">
+                        <h2 className="text-4xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 capitalize">
                             Launch your career across elite domains
                         </h2>
                         <div className="flex flex-wrap gap-4">
-                            {["Ethical Hacker / Penetration Tester","Cyber Security Analyst (SOC Analyst)", "VAPT Engineer","Bug Bounty Hunter / Security Researcher","Web Application Security Analyst", "Digital Forensics Investigator","Cloud Engineer (AWS / Azure)","Data Center Engineer","Virtualization Engineer (VMware / Hyper-V)", "System Engineer (Cloud Infrastructure)", "Microsoft 365 Administrator", "Network Administrator", "Server Administrator (Windows/Linux)","IT Support Engineer / Desktop Support","System Administrator", "Hardware & Networking Technician"].map((job) => (
+                            {["Ethical Hacker / Penetration Tester", "Cyber Security Analyst (SOC Analyst)", "VAPT Engineer", "Bug Bounty Hunter / Security Researcher", "Web Application Security Analyst", "Digital Forensics Investigator", "Cloud Engineer (AWS / Azure)", "Data Center Engineer", "Virtualization Engineer (VMware / Hyper-V)", "System Engineer (Cloud Infrastructure)", "Microsoft 365 Administrator", "Network Administrator", "Server Administrator (Windows/Linux)", "IT Support Engineer / Desktop Support", "System Administrator", "Hardware & Networking Technician"].map((job) => (
                                 <div key={job} className="grow text-center bg-white/80 backdrop-blur-md px-6 py-3 rounded-full border border-slate-200 text-sm font-bold text-slate-700 shadow-sm hover:border-blue-300 transition-colors">
                                     {job}
                                 </div>
@@ -609,9 +609,10 @@ const Testimonials = () => {
     const reviews = [
         { name: "Rahul Patil", text: "I am currently pursuing my VAPT (Vulnerability Assessment & Penetration Testing) internship at Skilldisha Tech Lab. The training is highly practical and industry-oriented. The mentors are very supportive and explain concepts clearly. I am getting hands-on experience with real-world tools and techniques, which is improving my cybersecurity skills significantly. I highly recommend this institute to anyone interested in ethical hacking." },
         { name: "Sahil Hiwale", text: "After my cybersecurity training in SkillDisha TechLab, I am more confident in my skills in cybersecurity. The training is very practical and follows industry standards, making it a very interesting and beneficial learning experience. The faculty is very supportive and helps in ensuring that each and every concept is understood by the student. I had very little knowledge of cybersecurity before I started my training in SkillDisha TechLab, but now I am confident and ready to make use of my skills. The methodology is very simple and easy to follow. I would highly recommend SkillDisha TechLab for anyone looking to gain a strong base in cybersecurity." },
-        { name: "Aman K.", text: "The placement support didn't just get me a job, it got me my dream career path at SkillDisha." },
-        { name: "Siddharth M.", text: "The real-world projects gave me the confidence to handle complex infrastructure. Highly recommended!" },
-        { name: "Anjali P.", text: "I explored deeper into VAPT thanks to the expert guidance here. Truly a career-transforming experience." }
+        { name: "Patel Milan", text: "I had a great experience learning Cloud Computing at SkillDisha TechLab,Adajan. The trainers explain concepts clearly and provide practical training, which makes it easy to understand even complex topics. The environment is friendly, supportive, and motivating, encouraging students to do their best.One thing I really appreciated is the continuous support provided by the institute. They not only guide you throughout the course but also keep you motivated to grow in your career. Additionally, they share up-to-date knowledge about the latest technologies and trends happening around the world, which is extremely valuable.Overall, I would definitely recommend SkillDisha TechLab, Adajan to anyone looking to build strong skills in Cloud Computing." },
+        { name: "Patel Dhaval", text: "I had a great experience learning Cloud Computing at SkillDisha. The trainers explain concepts clearly and provide practical training. The environment is friendly and supportive. I would definitely recommend this institute." },
+        { name: "Netik Rana", text: "I recently joined Ethical Hacking at SkillDisha TechLab. The teaching quality is excellent, and the faculty is very experienced. They focus on practical knowledge which helps in real-world applications. I highly recommend this institute to all students." },
+        { name: "Hema Rana", text: "joined Cyber security and hardware at SkillDisha TechLab and it was a very good experience. I learned many new things. The teachers explain everything step by step. Thank you for the support.." }
     ];
 
     const nextSlide = () => {
@@ -630,9 +631,9 @@ const Testimonials = () => {
     }, [currentIndex]);
 
     return (
-        <section className="py-24 bg-[#fafbfc] overflow-hidden">
+        <section className="pt-4 pb-24 bg-[#fafbfc] overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
-                <h2 className="text-4xl font-bold text-center mb-16 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
+                <h2 className="text-4xl font-bold text-center mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
                     Student Reviews
                 </h2>
 
@@ -677,7 +678,7 @@ const Testimonials = () => {
                                     </div>
                                     <div>
                                         <h4 className="text-xl font-black text-slate-900">{reviews[currentIndex].name}</h4>
-                                        
+
                                     </div>
                                 </div>
                             </motion.div>
@@ -737,7 +738,7 @@ const TrainerSection = () => {
 
 
     return (
-        <section id="trainer" className="py-12 scroll-mt-36 bg-white overflow-hidden">
+        <section id="trainer" className="pt-4 pb-8 scroll-mt-36 bg-white overflow-hidden">
             <div className="max-w-7xl mx-auto px-6">
                 <div className="flex flex-col gap-16">
                     <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
@@ -769,7 +770,7 @@ const TrainerSection = () => {
                                 <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-700 text-xs font-bold mb-4 transition-colors duration-500">
                                     <Trophy size={14} /> Certified, Experienced, Recognized
                                 </div>
-                                <h2 className="text-3xl lg:text-5xl font-black mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 leading-tight">
+                                <h2 className="text-3xl lg:text-5xl font-black mb-4 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700 leading-tight">
                                     Know Your Trainer
                                 </h2>
                                 <p className="text-slate-700 text-lg font-medium leading-relaxed font-inter italic text-justify">
@@ -834,12 +835,12 @@ const Contact = () => {
     };
 
     return (
-        <section id="contact" className="py-24 bg-slate-50/50 transition-colors duration-500 relative overflow-hidden">
+        <section id="contact" className="py-12 scroll-mt-36 bg-slate-50/50 transition-colors duration-500 relative overflow-hidden">
             <div className="absolute inset-0 bg-gradient-to-b from-white to-blue-50/30 -z-10"></div>
             <div className="max-w-7xl mx-auto px-6">
                 <div className="grid lg:grid-cols-2 gap-16 items-center">
                     <div>
-                        <h2 className="text-4xl lg:text-5xl font-bold mb-8 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
+                        <h2 className="text-4xl lg:text-5xl font-bold mb-6 text-transparent bg-clip-text bg-gradient-to-r from-blue-600 via-emerald-600 to-blue-700">
                             Get in Touch
                         </h2>
                         <p className="text-slate-600 text-lg font-medium mb-10 leading-relaxed font-inter text-justify">
@@ -951,14 +952,7 @@ const Footer = ({ setActiveTab }) => {
                         <p className="text-slate-400 text-sm max-w-xs leading-relaxed font-inter font-medium">
                             Empowering individuals with next-generation technology skills. Join India's tech revolution with SkillDisha.
                         </p>
-                        <div className="flex gap-3 mt-6">
-                            {[Twitter, Github, Linkedin].map((Icon, i) => (
-                                <div key={i} className="w-10 h-10 rounded-lg bg-slate-100 border border-slate-200 flex items-center justify-center text-slate-500 hover:text-blue-600 hover:border-blue-300 cursor-pointer transition-all">
-                                    <Icon size={18} />
-                                </div>
-                            ))}
-                            <div style={{ flexGrow: 100 }}></div>
-                        </div>
+
                     </div>
 
                     <div>
